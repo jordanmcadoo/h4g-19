@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA553E236C80C4009815D7 /* AppDelegate.swift */; };
+		5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA5549236C80C4009815D7 /* Assets.xcassets */; };
+		5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */; };
+		5BBA5555236C81CF009815D7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5554236C81CF009815D7 /* MainTabBarController.swift */; };
+		5BBA5557236C823F009815D7 /* JobResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5556236C823F009815D7 /* JobResultsViewController.swift */; };
+		5BBA5559236C8297009815D7 /* JobResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5558236C8297009815D7 /* JobResultsView.swift */; };
+		5BBA555E236C93D5009815D7 /* BuildableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA555D236C93D5009815D7 /* BuildableView.swift */; };
+		5BBA5561236C93FF009815D7 /* UIView+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5560236C93FF009815D7 /* UIView+PTW.swift */; };
+		5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5562236C944F009815D7 /* JobSearchViewController.swift */; };
+		5BBA5565236C9482009815D7 /* JobSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5564236C9482009815D7 /* JobSearchView.swift */; };
+		5BBA5569236C95C4009815D7 /* PortalLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5568236C95C4009815D7 /* PortalLabel.swift */; };
+		5BBA556B236C9AED009815D7 /* PortalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA556A236C9AED009815D7 /* PortalTextField.swift */; };
+		5BBA556D236C9B3C009815D7 /* PortalFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA556C236C9B3C009815D7 /* PortalFormField.swift */; };
+		5BBA556F236C9B93009815D7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA556E236C9B93009815D7 /* Colors.swift */; };
+		5BBA5571236C9C24009815D7 /* Color+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5570236C9C24009815D7 /* Color+PTW.swift */; };
+		5BBA5573236C9DC9009815D7 /* UILabel+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5572236C9DC9009815D7 /* UILabel+PTW.swift */; };
+		5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5574236C9EC5009815D7 /* Branding.swift */; };
+		CA9B616019F78B1FC524B7CB /* Pods_portal_to_work.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06E98A7126952E88324E208E /* Pods-portal-to-work.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portal-to-work.release.xcconfig"; path = "Target Support Files/Pods-portal-to-work/Pods-portal-to-work.release.xcconfig"; sourceTree = "<group>"; };
+		2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portal_to_work.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BBA553B236C80C4009815D7 /* portal-to-work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "portal-to-work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BBA553E236C80C4009815D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5BBA5549236C80C4009815D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5BBA554C236C80C4009815D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5BBA554E236C80C4009815D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BBA5554236C81CF009815D7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		5BBA5556236C823F009815D7 /* JobResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobResultsViewController.swift; sourceTree = "<group>"; };
+		5BBA5558236C8297009815D7 /* JobResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobResultsView.swift; sourceTree = "<group>"; };
+		5BBA555D236C93D5009815D7 /* BuildableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildableView.swift; sourceTree = "<group>"; };
+		5BBA5560236C93FF009815D7 /* UIView+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PTW.swift"; sourceTree = "<group>"; };
+		5BBA5562236C944F009815D7 /* JobSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchViewController.swift; sourceTree = "<group>"; };
+		5BBA5564236C9482009815D7 /* JobSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchView.swift; sourceTree = "<group>"; };
+		5BBA5568236C95C4009815D7 /* PortalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalLabel.swift; sourceTree = "<group>"; };
+		5BBA556A236C9AED009815D7 /* PortalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalTextField.swift; sourceTree = "<group>"; };
+		5BBA556C236C9B3C009815D7 /* PortalFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalFormField.swift; sourceTree = "<group>"; };
+		5BBA556E236C9B93009815D7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5BBA5570236C9C24009815D7 /* Color+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+PTW.swift"; sourceTree = "<group>"; };
+		5BBA5572236C9DC9009815D7 /* UILabel+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+PTW.swift"; sourceTree = "<group>"; };
+		5BBA5574236C9EC5009815D7 /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
+		9FF297406BF9C047103584F2 /* Pods-portal-to-work.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portal-to-work.debug.xcconfig"; path = "Target Support Files/Pods-portal-to-work/Pods-portal-to-work.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5BBA5538236C80C4009815D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA9B616019F78B1FC524B7CB /* Pods_portal_to_work.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		035F920E7D491850F80211AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4ED7EAAFD0524513BDF3DFA6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FF297406BF9C047103584F2 /* Pods-portal-to-work.debug.xcconfig */,
+				06E98A7126952E88324E208E /* Pods-portal-to-work.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5BBA5532236C80C4009815D7 = {
+			isa = PBXGroup;
+			children = (
+				5BBA553D236C80C4009815D7 /* portal-to-work */,
+				5BBA553C236C80C4009815D7 /* Products */,
+				4ED7EAAFD0524513BDF3DFA6 /* Pods */,
+				035F920E7D491850F80211AC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5BBA553C236C80C4009815D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5BBA553B236C80C4009815D7 /* portal-to-work.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5BBA553D236C80C4009815D7 /* portal-to-work */ = {
+			isa = PBXGroup;
+			children = (
+				5BBA555F236C93F0009815D7 /* Extensions */,
+				5BBA555C236C93C2009815D7 /* Shared */,
+				5BBA555A236C82C0009815D7 /* JobSearch */,
+				5BBA553E236C80C4009815D7 /* AppDelegate.swift */,
+				5BBA5554236C81CF009815D7 /* MainTabBarController.swift */,
+				5BBA5549236C80C4009815D7 /* Assets.xcassets */,
+				5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */,
+				5BBA554E236C80C4009815D7 /* Info.plist */,
+			);
+			path = "portal-to-work";
+			sourceTree = "<group>";
+		};
+		5BBA555A236C82C0009815D7 /* JobSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5BBA5556236C823F009815D7 /* JobResultsViewController.swift */,
+				5BBA5558236C8297009815D7 /* JobResultsView.swift */,
+				5BBA5562236C944F009815D7 /* JobSearchViewController.swift */,
+				5BBA5564236C9482009815D7 /* JobSearchView.swift */,
+			);
+			path = JobSearch;
+			sourceTree = "<group>";
+		};
+		5BBA555C236C93C2009815D7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5BBA555D236C93D5009815D7 /* BuildableView.swift */,
+				5BBA5568236C95C4009815D7 /* PortalLabel.swift */,
+				5BBA556A236C9AED009815D7 /* PortalTextField.swift */,
+				5BBA556C236C9B3C009815D7 /* PortalFormField.swift */,
+				5BBA556E236C9B93009815D7 /* Colors.swift */,
+				5BBA5574236C9EC5009815D7 /* Branding.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5BBA555F236C93F0009815D7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5BBA5560236C93FF009815D7 /* UIView+PTW.swift */,
+				5BBA5570236C9C24009815D7 /* Color+PTW.swift */,
+				5BBA5572236C9DC9009815D7 /* UILabel+PTW.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5BBA553A236C80C4009815D7 /* portal-to-work */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BBA5551236C80C4009815D7 /* Build configuration list for PBXNativeTarget "portal-to-work" */;
+			buildPhases = (
+				7462DA7549D43F8B2B869F01 /* [CP] Check Pods Manifest.lock */,
+				5BBA5537236C80C4009815D7 /* Sources */,
+				5BBA5538236C80C4009815D7 /* Frameworks */,
+				5BBA5539236C80C4009815D7 /* Resources */,
+				7B063839B4296AC3DB691C18 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "portal-to-work";
+			productName = "portal-to-work";
+			productReference = 5BBA553B236C80C4009815D7 /* portal-to-work.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5BBA5533236C80C4009815D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = "arnold-pomers";
+				TargetAttributes = {
+					5BBA553A236C80C4009815D7 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+				};
+			};
+			buildConfigurationList = 5BBA5536236C80C4009815D7 /* Build configuration list for PBXProject "portal-to-work" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5BBA5532236C80C4009815D7;
+			productRefGroup = 5BBA553C236C80C4009815D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5BBA553A236C80C4009815D7 /* portal-to-work */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5BBA5539236C80C4009815D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */,
+				5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7462DA7549D43F8B2B869F01 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-portal-to-work-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B063839B4296AC3DB691C18 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-portal-to-work/Pods-portal-to-work-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-portal-to-work/Pods-portal-to-work-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-portal-to-work/Pods-portal-to-work-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5BBA5537236C80C4009815D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BBA556D236C9B3C009815D7 /* PortalFormField.swift in Sources */,
+				5BBA5571236C9C24009815D7 /* Color+PTW.swift in Sources */,
+				5BBA556F236C9B93009815D7 /* Colors.swift in Sources */,
+				5BBA5557236C823F009815D7 /* JobResultsViewController.swift in Sources */,
+				5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */,
+				5BBA556B236C9AED009815D7 /* PortalTextField.swift in Sources */,
+				5BBA5555236C81CF009815D7 /* MainTabBarController.swift in Sources */,
+				5BBA5569236C95C4009815D7 /* PortalLabel.swift in Sources */,
+				5BBA5565236C9482009815D7 /* JobSearchView.swift in Sources */,
+				5BBA5559236C8297009815D7 /* JobResultsView.swift in Sources */,
+				5BBA555E236C93D5009815D7 /* BuildableView.swift in Sources */,
+				5BBA5573236C9DC9009815D7 /* UILabel+PTW.swift in Sources */,
+				5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */,
+				5BBA5561236C93FF009815D7 /* UIView+PTW.swift in Sources */,
+				5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BBA554C236C80C4009815D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5BBA554F236C80C4009815D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5BBA5550236C80C4009815D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5BBA5552236C80C4009815D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FF297406BF9C047103584F2 /* Pods-portal-to-work.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3KRQHBTKU6;
+				INFOPLIST_FILE = "portal-to-work/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.h4g.portal-to-work";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5BBA5553236C80C4009815D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06E98A7126952E88324E208E /* Pods-portal-to-work.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3KRQHBTKU6;
+				INFOPLIST_FILE = "portal-to-work/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.h4g.portal-to-work";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5BBA5536236C80C4009815D7 /* Build configuration list for PBXProject "portal-to-work" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BBA554F236C80C4009815D7 /* Debug */,
+				5BBA5550236C80C4009815D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BBA5551236C80C4009815D7 /* Build configuration list for PBXNativeTarget "portal-to-work" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BBA5552236C80C4009815D7 /* Debug */,
+				5BBA5553236C80C4009815D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5BBA5533236C80C4009815D7 /* Project object */;
+}
