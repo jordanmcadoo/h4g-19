@@ -9,18 +9,24 @@ class JobsService {
     }
     
     func getByLocation(location: CLLocation) -> [Job] {
-        var filteredJobs: [Job] = []
-        self.allJobs.forEach { job in
-            let distance = location.distance(from: CLLocation(latitude: job.lat!, longitude: job.lon!))
-            let distanceInMiles = distance * 0.000621371
-            print("distance: \(distanceInMiles)")
-            
-            if distanceInMiles < 5.0 {
-                filteredJobs.append(Job(title: job.title, employer: job.employer, description: job.description, locations: job.locations, lat: job.lat, lon: job.lon, distanceInMiles: distanceInMiles))
-            }
-        }
+        return allJobs.sorted(by: { job1, job2 -> Bool in
+            let distance1 = location.distance(from: CLLocation(latitude: job1.lat!, longitude: job1.lon!))
+            let distance2 = location.distance(from: CLLocation(latitude: job2.lat!, longitude: job2.lon!))
+            return distance1 > distance2
+        })
         
-        return filteredJobs
+//        var filteredJobs: [Job] = []
+//        self.allJobs.forEach { job in
+//            let distance = location.distance(from: CLLocation(latitude: job.lat!, longitude: job.lon!))
+//            let distanceInMiles = distance * 0.000621371
+//            print("distance: \(distanceInMiles)")
+//
+//            if distanceInMiles < 5.0 {
+//                filteredJobs.append(Job(title: job.title, employer: job.employer, description: job.description, locations: job.locations, lat: job.lat, lon: job.lon, distanceInMiles: distanceInMiles))
+//            }
+//        }
+        
+//        return filteredJobs
     }
     
     private func getData() {

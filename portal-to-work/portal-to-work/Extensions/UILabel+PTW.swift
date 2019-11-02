@@ -1,6 +1,19 @@
 import UIKit
 
 extension UILabel {
+    func setHTMLFromString(htmlText: String) {
+        let modifiedFont = String(format:"<span style=\"font-family: '\(self.font!.fontName)', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>", htmlText)
+
+
+        //process collection values
+        let attrStr = try! NSAttributedString(
+            data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
+            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+
+
+        self.attributedText = attrStr
+    }
+    
     var textValue: String {
         get {
             return self.text ?? ""
