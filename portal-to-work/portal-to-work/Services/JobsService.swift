@@ -17,7 +17,18 @@ class JobsService {
     }
     
     func getByLocation(location: CLLocation) -> [Job] {
-        return self.allJobs
+        var filteredJobs: [Job] = []
+        self.allJobs.forEach { job in
+            let distance = location.distance(from: CLLocation(latitude: job.lat!, longitude: job.lon!))
+            let distanceInMiles = distance * 0.000621371
+            print("distance: \(distanceInMiles)")
+            
+            if distanceInMiles < 5.0 {
+                filteredJobs.append(Job(title: job.title, employer: job.employer, description: job.description, locations: job.locations, lat: job.lat, lon: job.lon, distanceInMiles: distanceInMiles))
+            }
+        }
+        
+        return filteredJobs
     }
     
     private func getData(){
@@ -44,8 +55,15 @@ class JobsService {
 
                 print("loaded \(result.data.count) jobs")
                 result.data.forEach { job in
+                    if job.locations.data.count < 1 {
+                        print("skipping location for \(job.title)")
+
+//                        self.allJobs.append(Job(title: job.title, employer: job.employer, locations: job.locations, lat: nil, lon: nil))
+                        return
+                    }
                     let geoCoder = CLGeocoder()
-                    let address = Address(street: "1227 W Cardinal", city: "Springfield", state: "MO", postalCode: "65810")
+                    let address = Address(street: job.locations.data[0].street, city: job.locations.data[0].city, state: job.locations.data[0].state, postalCode: job.locations.data[0].zipcode)
+                    
                     geoCoder.geocodeAddressString(address.asString()) { (placemarks, error) in
                         guard
                             let placemarks = placemarks,
@@ -57,9 +75,9 @@ class JobsService {
                         
                         let lat = location.coordinate.latitude as Double
                         let lon = location.coordinate.longitude as Double
-                        
-                        self.allJobs.append(Job(title: job.title, employer: job.employer, description: job.description, lat: lat, lon: lon))
-                        
+          
+                        self.allJobs.append(Job(title: job.title, employer: job.employer, description: job.description, locations: job.locations, lat: lat, lon: lon, distanceInMiles: nil))
+
                         print("geocoded \(job.title)")
                     }
                 }
