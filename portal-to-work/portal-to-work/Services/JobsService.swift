@@ -58,7 +58,7 @@ class JobsService {
                         let lat = location.coordinate.latitude as Double
                         let lon = location.coordinate.longitude as Double
                         
-                        self.allJobs.append(Job(title: job.title, employer: job.employer, lat: lat, lon: lon))
+                        self.allJobs.append(Job(title: job.title, employer: job.employer, description: job.description, lat: lat, lon: lon))
                         
                         print("geocoded \(job.title)")
                     }
