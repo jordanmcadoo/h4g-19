@@ -25,10 +25,6 @@
 		5BBA5573236C9DC9009815D7 /* UILabel+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5572236C9DC9009815D7 /* UILabel+PTW.swift */; };
 		5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5574236C9EC5009815D7 /* Branding.swift */; };
 		5BBA5577236CCBB4009815D7 /* PortalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5576236CCBB4009815D7 /* PortalButton.swift */; };
-		5BBA557A236CDA06009815D7 /* SmartyStreetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5579236CDA06009815D7 /* SmartyStreetsService.swift */; };
-		5BBA557C236CE5FF009815D7 /* AddressSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA557B236CE5FF009815D7 /* AddressSearchResultsViewController.swift */; };
-		5BBA557E236CE6FB009815D7 /* AddressSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA557D236CE6FB009815D7 /* AddressSearchResults.swift */; };
-		5BBA5580236CE7F4009815D7 /* AddressAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA557F236CE7F4009815D7 /* AddressAutocompleteCell.swift */; };
 		5BBA5582236CFBF8009815D7 /* Array+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5581236CFBF8009815D7 /* Array+PTW.swift */; };
 		CA9B616019F78B1FC524B7CB /* Pods_portal_to_work.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */; };
 /* End PBXBuildFile section */
@@ -56,10 +52,6 @@
 		5BBA5572236C9DC9009815D7 /* UILabel+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+PTW.swift"; sourceTree = "<group>"; };
 		5BBA5574236C9EC5009815D7 /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		5BBA5576236CCBB4009815D7 /* PortalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalButton.swift; sourceTree = "<group>"; };
-		5BBA5579236CDA06009815D7 /* SmartyStreetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartyStreetsService.swift; sourceTree = "<group>"; };
-		5BBA557B236CE5FF009815D7 /* AddressSearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchResultsViewController.swift; sourceTree = "<group>"; };
-		5BBA557D236CE6FB009815D7 /* AddressSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchResults.swift; sourceTree = "<group>"; };
-		5BBA557F236CE7F4009815D7 /* AddressAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAutocompleteCell.swift; sourceTree = "<group>"; };
 		5BBA5581236CFBF8009815D7 /* Array+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PTW.swift"; sourceTree = "<group>"; };
 		9FF297406BF9C047103584F2 /* Pods-portal-to-work.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portal-to-work.debug.xcconfig"; path = "Target Support Files/Pods-portal-to-work/Pods-portal-to-work.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,9 +126,6 @@
 				5BBA5558236C8297009815D7 /* JobResultsView.swift */,
 				5BBA5562236C944F009815D7 /* JobSearchViewController.swift */,
 				5BBA5564236C9482009815D7 /* JobSearchView.swift */,
-				5BBA557B236CE5FF009815D7 /* AddressSearchResultsViewController.swift */,
-				5BBA557D236CE6FB009815D7 /* AddressSearchResults.swift */,
-				5BBA557F236CE7F4009815D7 /* AddressAutocompleteCell.swift */,
 			);
 			path = JobSearch;
 			sourceTree = "<group>";
@@ -169,7 +158,6 @@
 		5BBA5578236CD9FA009815D7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				5BBA5579236CDA06009815D7 /* SmartyStreetsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -292,8 +280,6 @@
 				5BBA5571236C9C24009815D7 /* Color+PTW.swift in Sources */,
 				5BBA556F236C9B93009815D7 /* Colors.swift in Sources */,
 				5BBA5557236C823F009815D7 /* JobResultsViewController.swift in Sources */,
-				5BBA5580236CE7F4009815D7 /* AddressAutocompleteCell.swift in Sources */,
-				5BBA557C236CE5FF009815D7 /* AddressSearchResultsViewController.swift in Sources */,
 				5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */,
 				5BBA556B236C9AED009815D7 /* PortalTextField.swift in Sources */,
 				5BBA5555236C81CF009815D7 /* MainTabBarController.swift in Sources */,
@@ -306,9 +292,7 @@
 				5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */,
 				5BBA5561236C93FF009815D7 /* UIView+PTW.swift in Sources */,
 				5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */,
-				5BBA557A236CDA06009815D7 /* SmartyStreetsService.swift in Sources */,
 				5BBA5582236CFBF8009815D7 /* Array+PTW.swift in Sources */,
-				5BBA557E236CE6FB009815D7 /* AddressSearchResults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
