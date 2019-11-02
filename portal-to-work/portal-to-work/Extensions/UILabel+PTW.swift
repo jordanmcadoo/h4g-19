@@ -16,6 +16,12 @@ extension UILabel {
         return self
     }
     
+    func withLines(_ lines: Int) -> Self {
+        lineBreakMode = .byTruncatingTail
+        numberOfLines = lines
+        return self
+    }
+    
     func aligned(_ alignment: NSTextAlignment) -> Self {
         textAlignment = alignment
         return self

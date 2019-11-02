@@ -17,6 +17,11 @@
 		5B132ABD236DE8DA0084CD6F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132ABC236DE8DA0084CD6F /* Job.swift */; };
 		5B33F32E236DFDC500612A0D /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F32D236DFDC500612A0D /* JobDetailViewController.swift */; };
 		5B33F330236DFE2200612A0D /* JobDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F32F236DFE2200612A0D /* JobDetailView.swift */; };
+		5B33F333236E0A9700612A0D /* EventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F332236E0A9700612A0D /* EventCoordinator.swift */; };
+		5B33F335236E0AEE00612A0D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F334236E0AEE00612A0D /* EventViewController.swift */; };
+		5B33F337236E0B3200612A0D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F336236E0B3200612A0D /* Event.swift */; };
+		5B33F339236E0BB700612A0D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F338236E0BB700612A0D /* EventCell.swift */; };
+		5B33F33B236E0CCA00612A0D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F33A236E0CCA00612A0D /* EventsView.swift */; };
 		5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA553E236C80C4009815D7 /* AppDelegate.swift */; };
 		5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA5549236C80C4009815D7 /* Assets.xcassets */; };
 		5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */; };
@@ -52,6 +57,11 @@
 		5B132ABC236DE8DA0084CD6F /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		5B33F32D236DFDC500612A0D /* JobDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
 		5B33F32F236DFE2200612A0D /* JobDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailView.swift; sourceTree = "<group>"; };
+		5B33F332236E0A9700612A0D /* EventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCoordinator.swift; sourceTree = "<group>"; };
+		5B33F334236E0AEE00612A0D /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		5B33F336236E0B3200612A0D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		5B33F338236E0BB700612A0D /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		5B33F33A236E0CCA00612A0D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		5BBA553B236C80C4009815D7 /* portal-to-work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "portal-to-work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BBA553E236C80C4009815D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BBA5549236C80C4009815D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,8 +120,20 @@
 			children = (
 				5B132AB2236DCBCE0084CD6F /* Address.swift */,
 				5B132ABC236DE8DA0084CD6F /* Job.swift */,
+				5B33F336236E0B3200612A0D /* Event.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5B33F331236E0A8800612A0D /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				5B33F332236E0A9700612A0D /* EventCoordinator.swift */,
+				5B33F334236E0AEE00612A0D /* EventViewController.swift */,
+				5B33F33A236E0CCA00612A0D /* EventsView.swift */,
+				5B33F338236E0BB700612A0D /* EventCell.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		5BBA5532236C80C4009815D7 = {
@@ -140,6 +162,7 @@
 				5BBA555F236C93F0009815D7 /* Extensions */,
 				5BBA555C236C93C2009815D7 /* Shared */,
 				5BBA555A236C82C0009815D7 /* JobSearch */,
+				5B33F331236E0A8800612A0D /* Events */,
 				5BBA553E236C80C4009815D7 /* AppDelegate.swift */,
 				5BBA5554236C81CF009815D7 /* MainTabBarController.swift */,
 				5BBA5549236C80C4009815D7 /* Assets.xcassets */,
@@ -318,12 +341,15 @@
 				5BBA5571236C9C24009815D7 /* Color+PTW.swift in Sources */,
 				5B132AB7236DCE1E0084CD6F /* String+PTW.swift in Sources */,
 				5BBA556F236C9B93009815D7 /* Colors.swift in Sources */,
+				5B33F337236E0B3200612A0D /* Event.swift in Sources */,
 				5BBA5557236C823F009815D7 /* JobResultsViewController.swift in Sources */,
 				5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */,
 				5BBA556B236C9AED009815D7 /* PortalTextField.swift in Sources */,
 				5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */,
+				5B33F335236E0AEE00612A0D /* EventViewController.swift in Sources */,
 				5BBA5555236C81CF009815D7 /* MainTabBarController.swift in Sources */,
 				5BBA5569236C95C4009815D7 /* PortalLabel.swift in Sources */,
+				5B33F339236E0BB700612A0D /* EventCell.swift in Sources */,
 				5BBA5565236C9482009815D7 /* JobSearchView.swift in Sources */,
 				5BBA5559236C8297009815D7 /* JobResultsView.swift in Sources */,
 				5BBA555E236C93D5009815D7 /* BuildableView.swift in Sources */,
@@ -333,10 +359,12 @@
 				5B132AB5236DCD110084CD6F /* TextField+PTW.swift in Sources */,
 				5BBA5573236C9DC9009815D7 /* UILabel+PTW.swift in Sources */,
 				5B132AB3236DCBCE0084CD6F /* Address.swift in Sources */,
+				5B33F333236E0A9700612A0D /* EventCoordinator.swift in Sources */,
 				5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */,
 				5B33F32E236DFDC500612A0D /* JobDetailViewController.swift in Sources */,
 				5BBA5561236C93FF009815D7 /* UIView+PTW.swift in Sources */,
 				5B132ABB236DE7120084CD6F /* JobResultsCell.swift in Sources */,
+				5B33F33B236E0CCA00612A0D /* EventsView.swift in Sources */,
 				5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */,
 				5B132AAE236DC30C0084CD6F /* JobCoordinator.swift in Sources */,
 				5BBA5582236CFBF8009815D7 /* Array+PTW.swift in Sources */,
