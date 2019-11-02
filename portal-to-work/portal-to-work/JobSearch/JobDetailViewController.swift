@@ -27,5 +27,6 @@ class JobDetailViewController: UIViewController {
     private func configureView() {
         realView.jobTitle.text = job.title
         realView.employer.text = job.employer.name
+        realView.descriptionLabel.text = job.description
     }
 }
