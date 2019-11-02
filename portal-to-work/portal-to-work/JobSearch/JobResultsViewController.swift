@@ -24,7 +24,6 @@ class JobResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         realView.tableView.dataSource = self
         realView.tableView.delegate = self
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
