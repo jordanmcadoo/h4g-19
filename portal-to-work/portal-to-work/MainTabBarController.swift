@@ -1,13 +1,12 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-    let jobSearchVC: JobSearchViewController
+    private let jobCoordinator = JobCoordinator()
     
     init() {
-        self.jobSearchVC = JobSearchViewController()
         super.init(nibName: nil, bundle: nil)
         
-        viewControllers = [jobSearchVC]
+        setupTabControllers()
     }
     
     @available(*, unavailable)
@@ -18,5 +17,14 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = []
+    }
+    
+    private func setupTabControllers() {
+        jobCoordinator.start()
+        setupViewControllers()
+    }
+    
+    private func setupViewControllers() {
+        viewControllers = [jobCoordinator.rootViewController]
     }
 }

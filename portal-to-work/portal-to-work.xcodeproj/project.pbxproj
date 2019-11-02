@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B132AAE236DC30C0084CD6F /* JobCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */; };
+		5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAF236DC91C0084CD6F /* Coordinator.swift */; };
 		5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA553E236C80C4009815D7 /* AppDelegate.swift */; };
 		5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA5549236C80C4009815D7 /* Assets.xcassets */; };
 		5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		06E98A7126952E88324E208E /* Pods-portal-to-work.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portal-to-work.release.xcconfig"; path = "Target Support Files/Pods-portal-to-work/Pods-portal-to-work.release.xcconfig"; sourceTree = "<group>"; };
 		2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portal_to_work.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCoordinator.swift; sourceTree = "<group>"; };
+		5B132AAF236DC91C0084CD6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5BBA553B236C80C4009815D7 /* portal-to-work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "portal-to-work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BBA553E236C80C4009815D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BBA5549236C80C4009815D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 		5BBA555A236C82C0009815D7 /* JobSearch */ = {
 			isa = PBXGroup;
 			children = (
+				5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */,
 				5BBA5556236C823F009815D7 /* JobResultsViewController.swift */,
 				5BBA5558236C8297009815D7 /* JobResultsView.swift */,
 				5BBA5562236C944F009815D7 /* JobSearchViewController.swift */,
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				5BBA555D236C93D5009815D7 /* BuildableView.swift */,
+				5B132AAF236DC91C0084CD6F /* Coordinator.swift */,
 				5BBA5568236C95C4009815D7 /* PortalLabel.swift */,
 				5BBA556A236C9AED009815D7 /* PortalTextField.swift */,
 				5BBA556C236C9B3C009815D7 /* PortalFormField.swift */,
@@ -282,6 +288,7 @@
 				5BBA5557236C823F009815D7 /* JobResultsViewController.swift in Sources */,
 				5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */,
 				5BBA556B236C9AED009815D7 /* PortalTextField.swift in Sources */,
+				5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */,
 				5BBA5555236C81CF009815D7 /* MainTabBarController.swift in Sources */,
 				5BBA5569236C95C4009815D7 /* PortalLabel.swift in Sources */,
 				5BBA5565236C9482009815D7 /* JobSearchView.swift in Sources */,
@@ -292,6 +299,7 @@
 				5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */,
 				5BBA5561236C93FF009815D7 /* UIView+PTW.swift in Sources */,
 				5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */,
+				5B132AAE236DC30C0084CD6F /* JobCoordinator.swift in Sources */,
 				5BBA5582236CFBF8009815D7 /* Array+PTW.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

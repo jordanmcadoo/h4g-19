@@ -50,5 +50,7 @@
 		<string>BrandonText-Regular.otf</string>
 		<string>BrandonText-Bold.otf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Find location to determine job distances</string>
 </dict>
 </plist>
