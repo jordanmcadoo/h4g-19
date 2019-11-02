@@ -16,7 +16,6 @@ class JobResultsView: BuildableView {
             make.top.equalToSuperview().inset(80)
             make.bottom.leading.trailing.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
         }
         
         searchBar.snp.makeConstraints { make in

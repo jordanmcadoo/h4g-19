@@ -55,7 +55,6 @@ class JobSearchViewController: UIViewController {
                 return
             }
 
-            print(location)
             self.delegate?.jobSearchViewController(self, didReceiveLocation: location)
         }
     }

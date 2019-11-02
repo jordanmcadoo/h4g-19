@@ -15,8 +15,15 @@ class JobCoordinator: RootedCoordinator {
 
 extension JobCoordinator: JobSearchViewControllerDelegate {
     func jobSearchViewController(_: JobSearchViewController, didReceiveLocation location: CLLocation) {
-        print("in coordinator")
         let jobResultsVC = JobResultsViewController(location: location)
+        jobResultsVC.delegate = self
         navController.pushViewController(jobResultsVC, animated: true)
+    }
+}
+
+extension JobCoordinator: JobResultsViewControllerDelegate {
+    func jobResultsViewController(_: JobResultsViewController, didSelectJob job: Job) {
+        let jobDetailVC = JobDetailViewController(job: job)
+        navController.pushViewController(jobDetailVC, animated: true)
     }
 }

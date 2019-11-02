@@ -1,11 +1,16 @@
 import UIKit
 import CoreLocation
 
-class JobResultsViewController: UIViewController {
-    let realView = JobResultsView()
-    private let homeLocation: CLLocation
+protocol JobResultsViewControllerDelegate: class {
+    func jobResultsViewController(_: JobResultsViewController, didSelectJob: Job)
+}
 
-    let testData = [Job(title: "Patient Transporter", employer: Employer(name: "Mercy Health")), Job(title: "Delivery Driver/Warehouse", employer: Employer(name: "Gold Mechanical")), Job(title: "Answering Service", employer: Employer(name: "QPS Employment Group"))]
+class JobResultsViewController: UIViewController {
+    private let realView = JobResultsView()
+    private let homeLocation: CLLocation
+    weak var delegate: JobResultsViewControllerDelegate?
+
+    let jobs = [Job(title: "Patient Transporter", employer: Employer(name: "Mercy Health")), Job(title: "Delivery Driver/Warehouse", employer: Employer(name: "Gold Mechanical")), Job(title: "Answering Service", employer: Employer(name: "QPS Employment Group"))]
     var filteredData: [Job]!
     
     init(location: CLLocation) {
@@ -28,7 +33,15 @@ class JobResultsViewController: UIViewController {
         realView.tableView.delegate = self
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
         realView.searchBar.delegate = self
-        filteredData = testData
+        filteredData = jobs
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectionIndexPath = realView.tableView.indexPathForSelectedRow {
+            realView.tableView.deselectRow(at: selectionIndexPath, animated: animated)
+        }
     }
 }
 
@@ -39,7 +52,7 @@ extension JobResultsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JobResultsCell.reuseIdentifier) as! JobResultsCell
-        let job = testData[indexPath.row]
+        let job = jobs[indexPath.row]
         cell.setupWithJob(job)
         return cell
     }
@@ -49,11 +62,16 @@ extension JobResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let job = jobs[indexPath.row]
+        delegate?.jobResultsViewController(self, didSelectJob: job)
+    }
 }
 
 extension JobResultsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = searchText.isEmpty ? testData : testData.filter { (item: Job) -> Bool in
+        filteredData = searchText.isEmpty ? jobs : jobs.filter { (item: Job) -> Bool in
             // If dataItem matches the searchText, return true to include it
             return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
