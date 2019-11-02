@@ -1,27 +1,45 @@
 import SnapKit
 
 class JobSearchView: BuildableView {
-//    let scrollView = UIScrollView()
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    private let titleLabel = PortalLabel(text: "SET LOCATION FOR JOB SEARCH").aligned(.center)
     let useCurrentAddressButton = PortalButton(title: "USE MY CURRENT LOCATION")
     let orSeparator = OrSeparator()
     let addressForm = AddressForm()
     
     override var hierarchy: ViewHierarchy {
-//        return .view(scrollView, [
-            return .views([useCurrentAddressButton,
-                       orSeparator,
-                       addressForm
+        return .view(scrollView, [
+            .view(contentView, [
+                .views([titleLabel,
+                        useCurrentAddressButton,
+                        orSeparator,
+                        addressForm
+                ])
             ])
-//        ])
+        ])
     }
     
     override func installConstraints() {
-//        scrollView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.size.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(30)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
         
         useCurrentAddressButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(30)
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
