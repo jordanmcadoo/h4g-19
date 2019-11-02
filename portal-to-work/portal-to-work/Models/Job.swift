@@ -1,3 +1,5 @@
+import CoreLocation
+
 struct JobData: Decodable {
     let data: [Job]
 }
@@ -5,6 +7,8 @@ struct JobData: Decodable {
 struct Job: Decodable {
     let title: String
     let employer: Employer
+    let lat: Double?
+    let lon: Double?
 }
 
 struct Employer: Decodable {

@@ -40,9 +40,29 @@ class JobsService {
              }
              // Handle Decode Data into Model
             do {
-                let myStruct = try JSONDecoder().decode(JobData.self, from: data)
-                self.allJobs = myStruct.data
-                print("loaded \(self.allJobs.count) jobs")
+                let result = try JSONDecoder().decode(JobData.self, from: data)
+
+                print("loaded \(result.data.count) jobs")
+                result.data.forEach { job in
+                    let geoCoder = CLGeocoder()
+                    let address = Address(street: "1227 W Cardinal", city: "Springfield", state: "MO", postalCode: "65810")
+                    geoCoder.geocodeAddressString(address.asString()) { (placemarks, error) in
+                        guard
+                            let placemarks = placemarks,
+                            let location = placemarks.first?.location
+                        else {
+                            // todo handle no location found
+                            return
+                        }
+                        
+                        let lat = location.coordinate.latitude as Double
+                        let lon = location.coordinate.longitude as Double
+                        
+                        self.allJobs.append(Job(title: job.title, employer: job.employer, lat: lat, lon: lon))
+                        
+                        print("geocoded \(job.title)")
+                    }
+                }
             } catch {
                 print("failed decoding")
             }
