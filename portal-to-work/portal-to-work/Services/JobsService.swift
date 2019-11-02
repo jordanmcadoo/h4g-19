@@ -4,9 +4,7 @@ import CoreLocation
 class JobsService {
     var allJobs: [Job] = []
     
-    init() {
-        self.getData()
-    }
+    init() {}
     
     func getByLocation(location: CLLocation) -> [Job] {
         return allJobs.sorted(by: { job1, job2 -> Bool in
@@ -29,7 +27,7 @@ class JobsService {
 //        return filteredJobs
     }
     
-    private func getData() {
+    func getData(completionHandler: @escaping (Bool) -> Void) {
         print("fetching data...")
         let url = URL(string: "https://jobs.api.sgf.dev/api/job?api_token=9ZGHl8yeQoaSBNUtwSlPaEJ1exTyWsRL7efirwhSlCmtGa1kCWSXgTSutK3Qqya3CchJpf2ANiiqTXP9")!
         URLSession.shared.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in

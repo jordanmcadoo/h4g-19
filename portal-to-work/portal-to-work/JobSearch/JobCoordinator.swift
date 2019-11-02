@@ -11,6 +11,9 @@ class JobCoordinator: RootedCoordinator {
         super.init(rootViewController: navController)
         
         jobSearchVC.delegate = self
+        jobsService.getData { success in
+            
+        }
     }
 }
 
