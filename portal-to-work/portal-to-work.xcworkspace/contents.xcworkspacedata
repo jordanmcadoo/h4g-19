@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:efactory.gpx">
+   </FileRef>
+   <FileRef
       location = "group:portal-to-work.xcodeproj">
    </FileRef>
    <FileRef
