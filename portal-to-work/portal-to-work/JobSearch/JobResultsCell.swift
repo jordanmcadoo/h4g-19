@@ -41,6 +41,7 @@ class JobResultsCell: UITableViewCell {
         employer.snp.makeConstraints { make in
             make.leading.equalTo(jobTitle.snp.leading)
             make.top.equalTo(jobTitle.snp.bottom).offset(5)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
 

@@ -26,6 +26,7 @@ class JobResultsViewController: UIViewController {
         super.viewDidLoad()
         
         realView.tableView.dataSource = self
+        realView.tableView.delegate = self
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
         realView.searchBar.delegate = self
         filteredData = testData
@@ -42,6 +43,12 @@ extension JobResultsViewController: UITableViewDataSource {
         let job = testData[indexPath.row]
         cell.setupWithJob(job)
         return cell
+    }
+}
+
+extension JobResultsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
 
