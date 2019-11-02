@@ -1,9 +1,17 @@
-struct Job {
+import CoreLocation
+
+struct JobData: Decodable {
+    let data: [Job]
+}
+
+struct Job: Decodable {
     let title: String
     let employer: Employer
     let description: String
+    let lat: Double?
+    let lon: Double?
 }
 
-struct Employer {
+struct Employer: Decodable {
     let name: String
 }

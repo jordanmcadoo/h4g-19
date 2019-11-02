@@ -10,13 +10,13 @@ class JobResultsViewController: UIViewController {
     private let homeLocation: CLLocation
     weak var delegate: JobResultsViewControllerDelegate?
 
-    let jobs = [Job(title: "Patient Transporter", employer: Employer(name: "Mercy Health"), description: "Oat cake bear claw marshmallow brownie. Soufflé icing cookie macaroon sweet roll sweet cupcake candy canes. Dragée lemon drops chocolate brownie fruitcake danish. Bonbon dragée jujubes muffin chocolate cake apple pie cookie pie."), Job(title: "Delivery Driver/Warehouse", employer: Employer(name: "Gold Mechanical"), description: "Apple pie dragée chocolate cake fruitcake. Jelly-o tootsie roll tart halvah chocolate lemon drops. Donut pie topping donut biscuit cheesecake chocolate cake."), Job(title: "Answering Service", employer: Employer(name: "QPS Employment Group"), description: "Icing pastry cookie tootsie roll candy canes sugar plum. Donut topping sweet. Soufflé gummi bears soufflé bonbon lemon drops.")]
+    var jobs: [Job] = []
     var filteredData: [Job]!
     
-    init(location: CLLocation) {
+    init(location: CLLocation, jobsService: JobsService) {
         self.homeLocation = location
+        self.jobs = jobsService.getByLocation(location: location)
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
