@@ -4,6 +4,7 @@ import CoreLocation
 class JobCoordinator: RootedCoordinator {
     private let navController: UINavigationController
     private let jobSearchVC = JobSearchViewController()
+    private let jobsService = JobsService()
     
     init() {
         self.navController = UINavigationController(rootViewController: jobSearchVC)
@@ -15,7 +16,7 @@ class JobCoordinator: RootedCoordinator {
 
 extension JobCoordinator: JobSearchViewControllerDelegate {
     func jobSearchViewController(_: JobSearchViewController, didReceiveLocation location: CLLocation) {
-        let jobResultsVC = JobResultsViewController(location: location)
+        let jobResultsVC = JobResultsViewController(location: location, jobsService: jobsService)
         jobResultsVC.delegate = self
         navController.pushViewController(jobResultsVC, animated: true)
     }

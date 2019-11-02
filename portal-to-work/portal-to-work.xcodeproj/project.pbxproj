@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AA00E94236E0F6100A21EFF /* JobsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA00E93236E0F6100A21EFF /* JobsService.swift */; };
 		5B132AAE236DC30C0084CD6F /* JobCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */; };
 		5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAF236DC91C0084CD6F /* Coordinator.swift */; };
 		5B132AB3236DCBCE0084CD6F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AB2236DCBCE0084CD6F /* Address.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		06E98A7126952E88324E208E /* Pods-portal-to-work.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portal-to-work.release.xcconfig"; path = "Target Support Files/Pods-portal-to-work/Pods-portal-to-work.release.xcconfig"; sourceTree = "<group>"; };
 		2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portal_to_work.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AA00E93236E0F6100A21EFF /* JobsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobsService.swift; sourceTree = "<group>"; };
 		5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCoordinator.swift; sourceTree = "<group>"; };
 		5B132AAF236DC91C0084CD6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5B132AB2236DCBCE0084CD6F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		5BBA5578236CD9FA009815D7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5AA00E93236E0F6100A21EFF /* JobsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				5B132AB5236DCD110084CD6F /* TextField+PTW.swift in Sources */,
 				5BBA5573236C9DC9009815D7 /* UILabel+PTW.swift in Sources */,
 				5B132AB3236DCBCE0084CD6F /* Address.swift in Sources */,
+				5AA00E94236E0F6100A21EFF /* JobsService.swift in Sources */,
 				5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */,
 				5B33F32E236DFDC500612A0D /* JobDetailViewController.swift in Sources */,
 				5BBA5561236C93FF009815D7 /* UIView+PTW.swift in Sources */,
