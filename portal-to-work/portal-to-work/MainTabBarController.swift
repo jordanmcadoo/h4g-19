@@ -28,12 +28,16 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
+        jobCoordinator.rootViewController.tabBarItem.title = nil
         let myTabBarItem1 = tabBar.items?[0]
-        myTabBarItem1?.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        myTabBarItem1?.title = ""
-        
         let myTabBarItem2 = tabBar.items?[1]
-        myTabBarItem2?.image = UIImage(systemName: "calendar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        myTabBarItem1?.title = ""
         myTabBarItem2?.title = ""
+        if #available(iOS 13.0, *) {
+            myTabBarItem1?.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+            myTabBarItem2?.image = UIImage(systemName: "calendar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
