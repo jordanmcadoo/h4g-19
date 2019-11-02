@@ -1,16 +1,24 @@
 PODS:
+  - PromiseKit/CorePromise (6.11.0)
+  - SmartystreetsSDK (7.7.2)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - PromiseKit/CorePromise
+  - SmartystreetsSDK
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - PromiseKit
+    - SmartystreetsSDK
     - SnapKit
 
 SPEC CHECKSUMS:
+  PromiseKit: e4863d06976e7dee5e41c04fc7371c16b3600292
+  SmartystreetsSDK: ad9d447181a7c6d3ae1683d6b28e80ee378e38e4
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 0fbe3ad21143fcf3d0258cc558160880b46cdddf
+PODFILE CHECKSUM: 3612011c50fcdd29b03c4168897d03cbc36c7315
 
 COCOAPODS: 1.8.4

@@ -109,6 +109,7 @@ class PortalLabel: UILabel {
 extension UIFont {
     enum FontName: String {
         case brandonTextRegular  = "BrandonText-Regular"
+        case brandonTextBold = "BrandonText-Bold"
     }
 
     convenience init!(portalFont: FontName, size: CGFloat) {

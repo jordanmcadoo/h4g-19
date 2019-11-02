@@ -4,4 +4,6 @@ use_frameworks!
 
 target 'portal-to-work' do
     pod 'SnapKit', '~> 5.0.0'
+    pod 'SmartystreetsSDK'
+    pod 'PromiseKit/CorePromise'
 end

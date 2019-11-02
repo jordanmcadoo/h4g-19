@@ -23,7 +23,7 @@ class PortalTextField: UITextField, PortalFormFieldWithError {
         }
     }
 
-    private let focusedColor = Colors.teal.color
+    private let focusedColor = Branding.primaryColor()
     private let unfocusedColor =  Colors.grey40Percent.color
 
     var realSelf: UIView { return self }
