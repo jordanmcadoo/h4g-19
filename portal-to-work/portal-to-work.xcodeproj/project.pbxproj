@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5B132AAE236DC30C0084CD6F /* JobCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */; };
 		5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAF236DC91C0084CD6F /* Coordinator.swift */; };
+		5B132AB3236DCBCE0084CD6F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AB2236DCBCE0084CD6F /* Address.swift */; };
+		5B132AB5236DCD110084CD6F /* TextField+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AB4236DCD110084CD6F /* TextField+PTW.swift */; };
+		5B132AB7236DCE1E0084CD6F /* String+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AB6236DCE1E0084CD6F /* String+PTW.swift */; };
+		5B132AB9236DD0D90084CD6F /* AddressFormViewValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AB8236DD0D90084CD6F /* AddressFormViewValidator.swift */; };
 		5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA553E236C80C4009815D7 /* AppDelegate.swift */; };
 		5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA5549236C80C4009815D7 /* Assets.xcassets */; };
 		5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */; };
@@ -36,6 +40,10 @@
 		2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portal_to_work.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCoordinator.swift; sourceTree = "<group>"; };
 		5B132AAF236DC91C0084CD6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		5B132AB2236DCBCE0084CD6F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		5B132AB4236DCD110084CD6F /* TextField+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+PTW.swift"; sourceTree = "<group>"; };
+		5B132AB6236DCE1E0084CD6F /* String+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+PTW.swift"; sourceTree = "<group>"; };
+		5B132AB8236DD0D90084CD6F /* AddressFormViewValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFormViewValidator.swift; sourceTree = "<group>"; };
 		5BBA553B236C80C4009815D7 /* portal-to-work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "portal-to-work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BBA553E236C80C4009815D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BBA5549236C80C4009815D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +97,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5B132AB1236DCBC60084CD6F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B132AB2236DCBCE0084CD6F /* Address.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5BBA5532236C80C4009815D7 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +126,7 @@
 		5BBA553D236C80C4009815D7 /* portal-to-work */ = {
 			isa = PBXGroup;
 			children = (
+				5B132AB1236DCBC60084CD6F /* Models */,
 				5BBA5578236CD9FA009815D7 /* Services */,
 				5BBA555F236C93F0009815D7 /* Extensions */,
 				5BBA555C236C93C2009815D7 /* Shared */,
@@ -146,6 +163,7 @@
 				5BBA5576236CCBB4009815D7 /* PortalButton.swift */,
 				5BBA556E236C9B93009815D7 /* Colors.swift */,
 				5BBA5574236C9EC5009815D7 /* Branding.swift */,
+				5B132AB8236DD0D90084CD6F /* AddressFormViewValidator.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -157,6 +175,8 @@
 				5BBA5581236CFBF8009815D7 /* Array+PTW.swift */,
 				5BBA5570236C9C24009815D7 /* Color+PTW.swift */,
 				5BBA5572236C9DC9009815D7 /* UILabel+PTW.swift */,
+				5B132AB4236DCD110084CD6F /* TextField+PTW.swift */,
+				5B132AB6236DCE1E0084CD6F /* String+PTW.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,6 +304,7 @@
 			files = (
 				5BBA556D236C9B3C009815D7 /* PortalFormField.swift in Sources */,
 				5BBA5571236C9C24009815D7 /* Color+PTW.swift in Sources */,
+				5B132AB7236DCE1E0084CD6F /* String+PTW.swift in Sources */,
 				5BBA556F236C9B93009815D7 /* Colors.swift in Sources */,
 				5BBA5557236C823F009815D7 /* JobResultsViewController.swift in Sources */,
 				5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */,
@@ -294,8 +315,11 @@
 				5BBA5565236C9482009815D7 /* JobSearchView.swift in Sources */,
 				5BBA5559236C8297009815D7 /* JobResultsView.swift in Sources */,
 				5BBA555E236C93D5009815D7 /* BuildableView.swift in Sources */,
+				5B132AB9236DD0D90084CD6F /* AddressFormViewValidator.swift in Sources */,
 				5BBA5577236CCBB4009815D7 /* PortalButton.swift in Sources */,
+				5B132AB5236DCD110084CD6F /* TextField+PTW.swift in Sources */,
 				5BBA5573236C9DC9009815D7 /* UILabel+PTW.swift in Sources */,
+				5B132AB3236DCBCE0084CD6F /* Address.swift in Sources */,
 				5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */,
 				5BBA5561236C93FF009815D7 /* UIView+PTW.swift in Sources */,
 				5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */,

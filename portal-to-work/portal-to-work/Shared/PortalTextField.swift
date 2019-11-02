@@ -163,30 +163,6 @@ class PortalTextField: UITextField, PortalFormFieldWithError {
         
         return super.canPerformAction(action, withSender: sender)
     }
-//
-//    func autocapitalization(_ autocapitalizationType: UITextAutocapitalizationType) -> Self {
-//        self.autocapitalizationType = autocapitalizationType
-//        return self
-//    }
-//
-//    func autocorrection(_ autocorrectionType: UITextAutocorrectionType) -> Self {
-//        self.autocorrectionType = autocorrectionType
-//        return self
-//    }
-//
-//    func returnKey(_ returnKeyType: UIReturnKeyType) -> Self {
-//        self.returnKeyType = returnKeyType
-//        return self
-//    }
-//
-//    func keyboard(_ keyboardType: UIKeyboardType) -> Self {
-//        self.keyboardType = keyboardType
-//        return self
-//    }
-//    func autocomplete(_ contentType: UITextContentType) -> Self {
-//        self.textContentType = contentType
-//        return self
-//    }
 }
 
 extension PortalTextField {

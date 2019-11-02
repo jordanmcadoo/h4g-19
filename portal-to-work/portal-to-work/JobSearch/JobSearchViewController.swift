@@ -2,9 +2,14 @@ import UIKit
 import SnapKit
 import CoreLocation
 
+protocol JobSearchViewControllerDelegate: class {
+    func jobSearchViewController(_: JobSearchViewController, didReceiveLocation: CLLocation)
+}
+
 class JobSearchViewController: UIViewController {
     let realView = JobSearchView()
     let locationManager = CLLocationManager()
+    weak var delegate: JobSearchViewControllerDelegate?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -22,6 +27,7 @@ class JobSearchViewController: UIViewController {
         super.viewDidLoad()
         
         realView.useCurrentAddressButton.addTarget(self, action: #selector(useCurrentLocationTapped), for: .touchUpInside)
+        realView.addressForm.useManualAddressButton.addTarget(self, action: #selector(useManualLocationTapped), for: .touchUpInside)
     }
     
     @objc private func useCurrentLocationTapped() {
@@ -32,12 +38,43 @@ class JobSearchViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
     }
+    
+    @objc private func useManualLocationTapped() {
+        guard let address = fetchAddressFromForm()?.asString() else {
+            // todo error
+            return
+        }
+
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+            else {
+                // todo handle no location found
+                return
+            }
+
+            print(location)
+            self.delegate?.jobSearchViewController(self, didReceiveLocation: location)
+        }
+    }
+    
+    private func fetchAddressFromForm() -> Address? {
+        let validator = AddressFormViewValidator()
+        guard let address = validator.validateRequiredFields(realView.addressForm) else {
+            return nil
+        }
+        
+        return address
+    }
 }
 
 extension JobSearchViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print("Found user's location: \(location)")
+            delegate?.jobSearchViewController(self, didReceiveLocation: location)
         }
     }
 
