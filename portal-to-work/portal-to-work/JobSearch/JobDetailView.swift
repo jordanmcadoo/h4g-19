@@ -7,6 +7,7 @@ class JobDetailView: BuildableView {
     let employer = PortalLabel(desiredFont: UIFont.boldSystemFont(ofSize: 1), size: 18, color: Branding.secondaryColor())
     let descriptionLabel = PortalLabel(size: 18).withLines(1)//.withWrappedText()
     let moreButton = PortalSecondaryButton(title: "More")
+    let lessButton = PortalSecondaryButton(title: "Less").hidden(true)
     
     override var hierarchy: ViewHierarchy {
         return .view(scrollView, [
@@ -14,7 +15,8 @@ class JobDetailView: BuildableView {
                 .views([jobTitle,
                         employer,
                         descriptionLabel,
-                        moreButton
+                        moreButton,
+                        lessButton
                 ])
             ])
         ])
@@ -54,6 +56,10 @@ class JobDetailView: BuildableView {
             make.width.equalTo(100)
             make.centerX.equalToSuperview()
             make.bottom.lessThanOrEqualToSuperview()
+        }
+        
+        lessButton.snp.makeConstraints { make in
+            make.edges.equalTo(moreButton.snp.edges)
         }
     }
 }

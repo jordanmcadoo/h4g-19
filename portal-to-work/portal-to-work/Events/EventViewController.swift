@@ -36,6 +36,14 @@ class EventsViewController: UIViewController {
             realView.tableView.deselectRow(at: selectionIndexPath, animated: animated)
         }
     }
+    
+    func startSpinnner() {
+        realView.spinner.startAnimating()
+    }
+    
+    func stopSpinnner() {
+        realView.spinner.stopAnimating()
+    }
 }
 
 extension EventsViewController: UITableViewDataSource {

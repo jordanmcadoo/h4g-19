@@ -11,7 +11,10 @@ class EventCoordinator: RootedCoordinator {
         self.eventsPromise = eventsService.events()
         super.init(rootViewController: navController)
         
-        eventsPromise.done { events in
+        eventsVC.startSpinnner()
+        eventsPromise.ensure {
+            self.eventsVC.stopSpinnner()
+        }.done { events in
             self.eventsVC.events = events
         }.catch { error in
             // todo error
