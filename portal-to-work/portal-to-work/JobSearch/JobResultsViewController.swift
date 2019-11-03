@@ -68,8 +68,9 @@ class JobResultsViewController: UIViewController {
         realView.mapView.addAnnotation(annotation)
         
         self.jobs.forEach{ job in
+            guard let lat = job.lat, let lon = job.lon else { return }
             let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: job.lat!, longitude: job.lon!)
+            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             annotation.title = job.title
             annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
             realView.mapView.addAnnotation(annotation)
