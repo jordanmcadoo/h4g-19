@@ -22,7 +22,7 @@ class EventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = Branding.accentColor()
+
         navigationItem.title = "Events"
         realView.tableView.dataSource = self
         realView.tableView.delegate = self

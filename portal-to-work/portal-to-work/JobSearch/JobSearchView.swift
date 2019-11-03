@@ -35,25 +35,25 @@ class JobSearchView: BuildableView {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
         
         useCurrentAddressButton.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
         
         orSeparator.snp.makeConstraints { make in
-            make.top.equalTo(useCurrentAddressButton.snp.bottom).offset(10)
+            make.top.equalTo(useCurrentAddressButton.snp.bottom).offset(20)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
 
         addressForm.snp.makeConstraints { make in
-            make.top.equalTo(orSeparator.snp.bottom).offset(10)
+            make.top.equalTo(orSeparator.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview()
