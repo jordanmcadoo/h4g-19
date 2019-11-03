@@ -1,13 +1,15 @@
 import SnapKit
+import MapKit
 
 class EventsView: BuildableView {
     let contentView = UIView()
     let tableView = UITableView()
     let spinner = UIActivityIndicatorView()
+    let mapView = MKMapView()
     
     override var hierarchy: ViewHierarchy {
         return .view(contentView, [
-            .views([tableView,
+            .views([tableView, mapView,
                     spinner])
         ])
     }
@@ -19,9 +21,16 @@ class EventsView: BuildableView {
             make.centerX.equalToSuperview()
         }
         
+        mapView.snp.makeConstraints{
+            $0.top.equalToSuperview()
+            $0.height.equalTo(200)
+            $0.width.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
+        
         tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(20)
+            make.top.equalTo(mapView.snp.bottom).offset(20)
         }
         
         spinner.color = .black
