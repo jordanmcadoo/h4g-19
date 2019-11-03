@@ -35,8 +35,8 @@ class PortalLabel: UILabel {
     var kerning: Float { get { return (tracking * Float(font.pointSize)) * 0.001 } }
 
     init(desiredFont: UIFont = UIFont(),
-        size: CGFloat = 14.0,
-        color: UIColor = .darkGray,
+        size: CGFloat = 16.0,
+        color: UIColor = Branding.primaryColor(),
         tracking: Float = 0.0,
         allCaps: Bool = false,
         lineHeightMultiple: CGFloat? = nil,
@@ -50,6 +50,7 @@ class PortalLabel: UILabel {
             super.init(frame: CGRect.zero)
             translatesAutoresizingMaskIntoConstraints = false
             font = desiredFont.withSize(size)
+            font = font.withSize(size)
                 //UIFont(portalFont: typeface, size: size)
             self.text = text // << This must be last.
     }

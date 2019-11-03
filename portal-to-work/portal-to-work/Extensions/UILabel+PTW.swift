@@ -2,7 +2,7 @@ import UIKit
 
 extension UILabel {
     func setHTMLFromString(htmlText: String) {
-        let modifiedFont = String(format:"<span style=\"font-family: '\(self.font!.fontName)', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>", htmlText)
+        let modifiedFont = String(format:"<span style=\"color: \(Branding.primaryColorHex); font-family: '\(self.font!.fontName)', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>", htmlText)
 
 
         //process collection values

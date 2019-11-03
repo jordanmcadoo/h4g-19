@@ -3,16 +3,18 @@ import SnapKit
 class JobDetailView: BuildableView {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    let jobTitle = PortalLabel(desiredFont: UIFont.boldSystemFont(ofSize: 25), size: 25)
-    let employer = PortalLabel(size: 20)
-    let descriptionLabel = PortalLabel().withWrappedText()
+    let jobTitle = PortalLabel(size: 25)
+    let employer = PortalLabel(desiredFont: UIFont.boldSystemFont(ofSize: 1), size: 18, color: Branding.secondaryColor())
+    let descriptionLabel = PortalLabel(size: 18).withLines(1)//.withWrappedText()
+    let moreButton = PortalSecondaryButton(title: "More")
     
     override var hierarchy: ViewHierarchy {
         return .view(scrollView, [
             .view(contentView, [
                 .views([jobTitle,
                         employer,
-                        descriptionLabel
+                        descriptionLabel,
+                        moreButton
                 ])
             ])
         ])
@@ -45,6 +47,12 @@ class JobDetailView: BuildableView {
             make.top.equalTo(employer.snp.bottom).offset(15)
             make.leading.equalTo(jobTitle.snp.leading)
             make.trailing.equalTo(jobTitle.snp.trailing)
+        }
+        
+        moreButton.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
+            make.width.equalTo(100)
+            make.centerX.equalToSuperview()
             make.bottom.lessThanOrEqualToSuperview()
         }
     }

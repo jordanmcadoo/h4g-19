@@ -2,11 +2,11 @@ import UIKit
 
 class PortalTextField: UITextField, PortalFormFieldWithError {
     let notificationCenter: NotificationCenter
-    let titleLabel = PortalLabel(size: 12.0,
+    let titleLabel = PortalLabel(size: 14,
                                     tracking: 50.0,
                                     allCaps: true)
 
-    let errorLabel = PortalLabel(size: 12.0,
+    let errorLabel = PortalLabel(size: 14,
                                  color: Colors.errorRed.color)
     
     private let underlineView = UIView()
