@@ -9,7 +9,20 @@ struct Job: Decodable {
     let employer: Employer
     let description: String?
     let locations: LocationData
-    let distanceInMiles: Double?
+    
+    func distanceInMiles(fromLocation: CLLocation) -> Double? {
+        guard let location = self.locations.data.at(0) else {
+            return nil
+        }
+        guard let latString = location.lat, let lat = Double.init(latString) else {
+            return nil
+        }
+        guard let lngString = location.lng, let lng = Double.init(lngString) else {
+            return nil
+        }
+        let distance = fromLocation.distance(from: CLLocation(latitude: lat, longitude: lng))
+        return distance * 0.000621371
+    }
     
     func tempDescription() -> String {
         return description ?? generateRandomDescription()
@@ -44,6 +57,15 @@ struct Employer: Decodable {
 }
 
 extension Array where Element == Job {
+    func withinMiles(fromLocation: CLLocation, byMiles: Double) -> [Job] {
+        return self.filter({ job -> Bool in
+            guard let distanceInMiles = job.distanceInMiles(fromLocation: fromLocation) else {
+                return false
+            }
+            return distanceInMiles < byMiles
+        })
+    }
+    
     func sort(byLocation location: CLLocation) -> [Job] {
         return self.sorted(by: { job1, job2 -> Bool in
             guard let location1 = job1.locations.data.at(0) else {

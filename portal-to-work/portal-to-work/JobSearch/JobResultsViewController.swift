@@ -56,9 +56,10 @@ class JobResultsViewController: UIViewController {
     
     init(location: CLLocation, jobs: [Job]) {
         self.homeLocation = location
-        self.jobs = jobs.sort(byLocation: location)
+        self.jobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
         super.init(nibName: nil, bundle: nil)
         
+        print("\(self.jobs.count) jobs within 1.0 miles")
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
             realView.mapView.setRegion(region, animated: true)
@@ -118,7 +119,7 @@ extension JobResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JobResultsCell.reuseIdentifier) as! JobResultsCell
         let job = jobs[indexPath.row]
-        cell.setupWithJob(job)
+        cell.setupWithJob(job, location: self.homeLocation)
         return cell
     }
 }
