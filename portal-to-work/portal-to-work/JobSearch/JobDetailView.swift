@@ -6,17 +6,20 @@ class JobDetailView: BuildableView {
     private let contentView = UIView()
     let jobTitle = PortalLabel(size: 25)
     let employer = PortalLabel(desiredFont: UIFont.boldSystemFont(ofSize: 1), size: 18, color: Branding.secondaryColor())
+    let linkToApply = PortalButton(title: "Apply")
     let descriptionLabel = PortalLabel(size: 18).withLines(1)//.withWrappedText()
     let moreButton = PortalSecondaryButton(title: "More")
     let lessButton = PortalSecondaryButton(title: "Less").hidden(true)
     let mapView = MKMapView()
     let jobSpecificsView = JobSpecificsView()
     
+    
     override var hierarchy: ViewHierarchy {
         return .view(scrollView, [
             .view(contentView, [
                 .views([jobTitle,
                         employer,
+                        linkToApply,
                         descriptionLabel,
                         moreButton,
                         lessButton,
@@ -42,18 +45,25 @@ class JobDetailView: BuildableView {
         jobTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(30)
             make.leading.trailing.equalToSuperview().inset(20)
+            make.trailing.equalTo(linkToApply.snp.leading).priority(.medium)
         }
-
+        
         employer.snp.makeConstraints { make in
             make.top.equalTo(jobTitle.snp.bottom).offset(5)
             make.leading.equalTo(jobTitle.snp.leading)
-            make.trailing.equalTo(jobTitle.snp.trailing)
+            make.trailing.equalTo(linkToApply.snp.leading).priority(.medium)
+        }
+        
+        linkToApply.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(30)
+            make.width.equalTo(64).priority(.high)
+            make.trailing.equalToSuperview().offset(-10)
         }
         
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(employer.snp.bottom).offset(15)
             make.leading.equalTo(jobTitle.snp.leading)
-            make.trailing.equalTo(jobTitle.snp.trailing)
+            make.trailing.equalTo(mapView.snp.trailing)
         }
         
         moreButton.snp.makeConstraints { make in
@@ -68,7 +78,7 @@ class JobDetailView: BuildableView {
         
         mapView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.90)
-            make.top.equalTo(lessButton.snp.bottom).offset(20)
+            make.top.equalTo(moreButton.snp.bottom).offset(20)
             make.height.equalTo(200)
             make.centerX.equalToSuperview()
         }

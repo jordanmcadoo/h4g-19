@@ -25,6 +25,25 @@ class JobDetailViewController: UIViewController {
         configureView()
         realView.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         realView.lessButton.addTarget(self, action: #selector(lessButtonTapped), for: .touchUpInside)
+        realView.linkToApply.addTarget(self, action: #selector(linkToApplyTapped), for: .touchUpInside)
+        
+        guard let location = job.locations.data.at(0) else {
+            return
+        }
+        guard let latString = location.lat, let lat = Double(latString), let lngString = location.lng, let lng = Double(lngString) else {
+            return
+        }
+        let coordinate = CLLocation(latitude: lat, longitude: lng).coordinate
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+            realView.mapView.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = job.title
+        annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
+        realView.mapView.addAnnotation(annotation)
+        
+        realView.mapView.delegate = self
     }
     
     @objc private func moreButtonTapped() {
@@ -41,6 +60,11 @@ class JobDetailViewController: UIViewController {
         realView.moreButton.isHidden = false
         realView.lessButton.isHidden = true
         realView.layoutIfNeeded()
+    }
+    @objc private func linkToApplyTapped() {
+        if let url = URL(string: job.url) {
+            UIApplication.shared.open(url)
+        }
     }
     
     private func configureView() {

@@ -12,6 +12,7 @@ struct Job: Decodable {
     let payRate: String
     let jobType: String?
     let reqEducation: String?
+    let url: String
     
     func distanceInMiles(fromLocation: CLLocation) -> Double? {
         guard let location = self.locations.data.at(0) else {

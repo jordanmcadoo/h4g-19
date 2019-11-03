@@ -21,7 +21,7 @@ class JobResultsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         print("\(self.jobs.count) jobs within 1.0 miles")
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
             realView.mapView.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()
@@ -57,7 +57,10 @@ class JobResultsViewController: UIViewController {
         realView.tableView.delegate = self
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
         realView.searchBar.delegate = self
+        realView.oneMiButton.setTitleColor(.white, for: .normal)
+        realView.oneMiButton.backgroundColor = Branding.primaryColor()
         filteredData = jobs
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
