@@ -56,7 +56,7 @@ class JobDetailView: BuildableView {
         
         linkToApply.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(30)
-            make.width.equalTo(64).priority(.high)
+            make.width.equalTo(80).priority(.high)
             make.trailing.equalToSuperview().offset(-10)
         }
         

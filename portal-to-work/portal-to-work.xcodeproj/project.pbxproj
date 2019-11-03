@@ -28,6 +28,10 @@
 		5B857AD6236E737B00D8E1FB /* BrandonText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B857AD5236E737B00D8E1FB /* BrandonText-Bold.otf */; };
 		5B857AD8236E738400D8E1FB /* BrandonText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B857AD7236E738400D8E1FB /* BrandonText-Regular.otf */; };
 		5B857ADA236E806200D8E1FB /* UIColor+PTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857AD9236E806200D8E1FB /* UIColor+PTW.swift */; };
+		5B857ADD236F2E9600D8E1FB /* JobFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857ADC236F2E9600D8E1FB /* JobFavorites.swift */; };
+		5B857ADF236F339000D8E1FB /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857ADE236F339000D8E1FB /* FavoritesCoordinator.swift */; };
+		5B857AE1236F348B00D8E1FB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857AE0236F348B00D8E1FB /* FavoritesViewController.swift */; };
+		5B857AE3236F34F700D8E1FB /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857AE2236F34F700D8E1FB /* FavoritesView.swift */; };
 		5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA553E236C80C4009815D7 /* AppDelegate.swift */; };
 		5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA5549236C80C4009815D7 /* Assets.xcassets */; };
 		5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */; };
@@ -74,6 +78,10 @@
 		5B857AD5236E737B00D8E1FB /* BrandonText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrandonText-Bold.otf"; sourceTree = "<group>"; };
 		5B857AD7236E738400D8E1FB /* BrandonText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrandonText-Regular.otf"; sourceTree = "<group>"; };
 		5B857AD9236E806200D8E1FB /* UIColor+PTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+PTW.swift"; sourceTree = "<group>"; };
+		5B857ADC236F2E9600D8E1FB /* JobFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobFavorites.swift; sourceTree = "<group>"; };
+		5B857ADE236F339000D8E1FB /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		5B857AE0236F348B00D8E1FB /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		5B857AE2236F34F700D8E1FB /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		5BBA553B236C80C4009815D7 /* portal-to-work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "portal-to-work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BBA553E236C80C4009815D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BBA5549236C80C4009815D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,6 +165,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		5B857ADB236F2E8800D8E1FB /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				5B857ADC236F2E9600D8E1FB /* JobFavorites.swift */,
+				5B857ADE236F339000D8E1FB /* FavoritesCoordinator.swift */,
+				5B857AE0236F348B00D8E1FB /* FavoritesViewController.swift */,
+				5B857AE2236F34F700D8E1FB /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		5BBA5532236C80C4009815D7 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +198,7 @@
 		5BBA553D236C80C4009815D7 /* portal-to-work */ = {
 			isa = PBXGroup;
 			children = (
+				5B857ADB236F2E8800D8E1FB /* Favorites */,
 				5B857AD4236E734D00D8E1FB /* Fonts */,
 				5B132AB1236DCBC60084CD6F /* Models */,
 				5BBA5578236CD9FA009815D7 /* Services */,
@@ -368,6 +388,7 @@
 			files = (
 				5BBA556D236C9B3C009815D7 /* PortalFormField.swift in Sources */,
 				5BBA5571236C9C24009815D7 /* Color+PTW.swift in Sources */,
+				5B857AE3236F34F700D8E1FB /* FavoritesView.swift in Sources */,
 				5B132AB7236DCE1E0084CD6F /* String+PTW.swift in Sources */,
 				5BBA556F236C9B93009815D7 /* Colors.swift in Sources */,
 				5B857ADA236E806200D8E1FB /* UIColor+PTW.swift in Sources */,
@@ -376,11 +397,14 @@
 				5BBA5575236C9EC5009815D7 /* Branding.swift in Sources */,
 				5BBA556B236C9AED009815D7 /* PortalTextField.swift in Sources */,
 				5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */,
+				5B857AE1236F348B00D8E1FB /* FavoritesViewController.swift in Sources */,
 				5B33F335236E0AEE00612A0D /* EventViewController.swift in Sources */,
+				5B857ADD236F2E9600D8E1FB /* JobFavorites.swift in Sources */,
 				5B857ACF236E6C0500D8E1FB /* EventsService.swift in Sources */,
 				5BBA5555236C81CF009815D7 /* MainTabBarController.swift in Sources */,
 				5BBA5569236C95C4009815D7 /* PortalLabel.swift in Sources */,
 				5B33F339236E0BB700612A0D /* EventCell.swift in Sources */,
+				5B857ADF236F339000D8E1FB /* FavoritesCoordinator.swift in Sources */,
 				5BBA5565236C9482009815D7 /* JobSearchView.swift in Sources */,
 				5BBA5559236C8297009815D7 /* JobResultsView.swift in Sources */,
 				5BBA555E236C93D5009815D7 /* BuildableView.swift in Sources */,

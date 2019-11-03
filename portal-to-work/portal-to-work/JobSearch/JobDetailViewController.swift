@@ -19,9 +19,16 @@ class JobDetailViewController: UIViewController {
         view = realView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.rightBarButtonItem?.image = job.isFavorite() ? UIImage(named: "hearticon-filled") : UIImage(named: "hearticon")
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "JOB DETAILS"
+        let favImage = job.isFavorite() ? UIImage(named: "hearticon-filled") : UIImage(named: "hearticon")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: favImage, style: .plain, target: self, action: #selector(favoriteButtonTapped))
         configureView()
         realView.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         realView.lessButton.addTarget(self, action: #selector(lessButtonTapped), for: .touchUpInside)
@@ -46,6 +53,11 @@ class JobDetailViewController: UIViewController {
         realView.mapView.delegate = self
     }
     
+    @objc private func favoriteButtonTapped() {
+        JobFavorites.shared.updateFavorite(for: job)
+        navigationItem.rightBarButtonItem?.image = job.isFavorite() ? UIImage(named: "hearticon-filled") : UIImage(named: "hearticon")
+    }
+    
     @objc private func moreButtonTapped() {
         realView.descriptionLabel.lineBreakMode = .byWordWrapping
         realView.descriptionLabel.numberOfLines(0)
@@ -61,8 +73,9 @@ class JobDetailViewController: UIViewController {
         realView.lessButton.isHidden = true
         realView.layoutIfNeeded()
     }
+    
     @objc private func linkToApplyTapped() {
-        if let url = URL(string: job.url) {
+        if let jobUrl = job.url, let url = URL(string: jobUrl) {
             UIApplication.shared.open(url)
         }
     }
@@ -72,9 +85,9 @@ class JobDetailViewController: UIViewController {
         realView.employer.text = job.employer.name
         realView.descriptionLabel.setHTMLFromString(htmlText: job.tempDescription())
         
-        realView.jobSpecificsView.jobSalary.value.text = job.payRate
-        realView.jobSpecificsView.jobRequirements.value.text = job.reqEducation ?? "Unknown"
-        realView.jobSpecificsView.jobType.value.text = job.jobType ?? "Unknown"
+        realView.jobSpecificsView.jobSalary.value.text = "$12,000 per year"//job.payRate ?? "Unknown"
+        realView.jobSpecificsView.jobRequirements.value.text = "High school" //job.reqEducation ?? "Unknown"
+        realView.jobSpecificsView.jobType.value.text = "Full time"//job.jobType ?? "Unknown"
         
         setupMapView()
     }
@@ -96,6 +109,28 @@ class JobDetailViewController: UIViewController {
 }
 
 extension JobDetailViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard annotation is MKPointAnnotation else {
+                print("returning nil")
+                return nil
+            }
+
+            let identifier = "Annotation"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true
+                annotationView!.tintColor = .blue
+                annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            } else {
+                annotationView!.annotation = annotation
+                print("couldnt get view")
+            }
+
+            return annotationView
+        }
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
         print("callout tapped")

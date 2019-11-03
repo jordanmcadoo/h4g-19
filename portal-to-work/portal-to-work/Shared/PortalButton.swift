@@ -1,10 +1,11 @@
 import UIKit
 
 class PortalButton: UIButton {
-    init(title: String) {
+    init(title: String? = nil, image: UIImage? = nil) {
         super.init(frame: .zero)
         
         setTitle(title, for: .normal)
+        setImage(image, for: .normal)
         backgroundColor = Branding.primaryColor()
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
             //UIFont(portalFont: .brandonTextBold, size: 17)
@@ -21,8 +22,8 @@ class PortalButton: UIButton {
 }
 
 class PortalSecondaryButton: PortalButton {
-    override init(title: String) {
-        super.init(title: title)
+    override init(title: String? = nil, image: UIImage? = nil) {
+        super.init(title: title, image: image)
         backgroundColor = .clear
         setTitleColor(Branding.primaryColor(), for: .normal)
         layer.borderWidth = 1

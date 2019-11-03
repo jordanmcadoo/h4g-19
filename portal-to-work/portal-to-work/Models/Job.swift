@@ -4,15 +4,19 @@ struct JobData: Decodable {
     let data: [Job]
 }
 
-struct Job: Decodable {
+struct Job: Decodable, Equatable {
     let title: String
     let employer: Employer
     let description: String?
     let locations: LocationData
-    let payRate: String
+    let payRate: String?
     let jobType: String?
     let reqEducation: String?
-    let url: String
+    let url: String?
+    
+    func isFavorite() -> Bool {
+        return JobFavorites.shared.favorites.contains(self)
+    }
     
     func distanceInMiles(fromLocation: CLLocation) -> Double? {
         guard let location = self.locations.data.at(0) else {
@@ -43,11 +47,11 @@ struct Job: Decodable {
     }
 }
 
-struct LocationData: Decodable {
+struct LocationData: Decodable, Equatable {
     let data: [Location]
 }
 
-struct Location: Decodable {
+struct Location: Decodable, Equatable {
     let street: String
     let city: String
     let state: String
@@ -56,7 +60,7 @@ struct Location: Decodable {
     let lng: String?
 }
 
-struct Employer: Decodable {
+struct Employer: Decodable, Equatable {
     let name: String
 }
 
