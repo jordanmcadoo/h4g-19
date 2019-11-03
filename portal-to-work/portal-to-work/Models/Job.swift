@@ -9,6 +9,7 @@ struct Job: Decodable {
     let employer: Employer
     let description: String?
     let locations: LocationData
+    let url: String
     
     func distanceInMiles(fromLocation: CLLocation) -> Double? {
         guard let location = self.locations.data.at(0) else {

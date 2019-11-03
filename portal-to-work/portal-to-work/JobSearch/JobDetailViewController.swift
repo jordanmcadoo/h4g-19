@@ -23,6 +23,7 @@ class JobDetailViewController: UIViewController {
         configureView()
         realView.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         realView.lessButton.addTarget(self, action: #selector(lessButtonTapped), for: .touchUpInside)
+        realView.linkToApply.addTarget(self, action: #selector(linkToApplyTapped), for: .touchUpInside)
     }
     
     @objc private func moreButtonTapped() {
@@ -39,6 +40,11 @@ class JobDetailViewController: UIViewController {
         realView.moreButton.isHidden = false
         realView.lessButton.isHidden = true
         realView.layoutIfNeeded()
+    }
+    @objc private func linkToApplyTapped() {
+        if let url = URL(string: job.url) {
+            UIApplication.shared.open(url)
+        }
     }
     
     private func configureView() {
