@@ -23,7 +23,7 @@ class JobResultsViewController: UIViewController {
         self.visibleJobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
         self.filteredData = visibleJobs
         super.init(nibName: nil, bundle: nil)
-        distanceButtons = [realView.oneMiButton, realView.fiveMiButton, realView.tenMiButton, realView.twentyMiButton, realView.thirtyMiButton]
+//        distanceButtons = [realView.oneMiButton, realView.fiveMiButton, realView.tenMiButton, realView.twentyMiButton, realView.thirtyMiButton]
         print("\(self.visibleJobs.count) jobs within 1.0 miles")
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
@@ -34,6 +34,12 @@ class JobResultsViewController: UIViewController {
         annotation.title = "Your Location"
         realView.mapView.addAnnotation(annotation)
         realView.mapView.delegate = self
+        realView.segmentedControl.selectedSegmentIndex = 0
+        if #available(iOS 13.0, *) {
+            realView.segmentedControl.selectedSegmentTintColor = Branding.primaryColor()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,13 +56,14 @@ class JobResultsViewController: UIViewController {
         realView.tableView.delegate = self
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
         realView.searchBar.delegate = self
-        realView.oneMiButton.addTarget(self, action: #selector(oneMiTapped), for: .touchUpInside)
-        realView.fiveMiButton.addTarget(self, action: #selector(fiveMiTapped), for: .touchUpInside)
-        realView.tenMiButton.addTarget(self, action: #selector(tenMiTapped), for: .touchUpInside)
-        realView.twentyMiButton.addTarget(self, action: #selector(twentyMiTapped), for: .touchUpInside)
-        realView.thirtyMiButton.addTarget(self, action: #selector(thirtyMiTapped), for: .touchUpInside)
-        let activeButton = realView.oneMiButton
-        setButtonActive(activeButton)
+        realView.segmentedControl.addTarget(self, action: #selector(distanceFilterTapped), for: .allEvents)
+//        realView.oneMiButton.addTarget(self, action: #selector(oneMiTapped), for: .touchUpInside)
+//        realView.fiveMiButton.addTarget(self, action: #selector(fiveMiTapped), for: .touchUpInside)
+//        realView.tenMiButton.addTarget(self, action: #selector(tenMiTapped), for: .touchUpInside)
+//        realView.twentyMiButton.addTarget(self, action: #selector(twentyMiTapped), for: .touchUpInside)
+//        realView.thirtyMiButton.addTarget(self, action: #selector(thirtyMiTapped), for: .touchUpInside)
+//        let activeButton = realView.oneMiButton
+//        setButtonActive(activeButton)
         
     }
     
@@ -68,40 +75,52 @@ class JobResultsViewController: UIViewController {
         }
     }
     
-    @objc private func oneMiTapped() {
-        setButtonActive(realView.oneMiButton)
+    @objc private func distanceFilterTapped() {
+        switch realView.segmentedControl.selectedSegmentIndex {
+        case 0: oneMiTapped()
+        case 1: fiveMiTapped()
+        case 2: tenMiTapped()
+        case 3: twentyMiTapped()
+        case 4: thirtyMiTapped()
+        default:
+            return
+        }
+    }
+    
+    private func oneMiTapped() {
+//        setButtonActive(realView.oneMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
         updateJobs(byMiles: 1.0)
     }
     
-    @objc private func fiveMiTapped() {
-        setButtonActive(realView.fiveMiButton)
+    private func fiveMiTapped() {
+//        setButtonActive(realView.fiveMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
         updateJobs(byMiles: 5.0)
     }
     
-    @objc private func tenMiTapped() {
-        setButtonActive(realView.tenMiButton)
+    private func tenMiTapped() {
+//        setButtonActive(realView.tenMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
         updateJobs(byMiles: 10.0)
     }
     
-    @objc private func twentyMiTapped() {
-        setButtonActive(realView.twentyMiButton)
+    private func twentyMiTapped() {
+//        setButtonActive(realView.twentyMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
         updateJobs(byMiles: 20.0)
     }
     
-    @objc private func thirtyMiTapped() {
-        setButtonActive(realView.thirtyMiButton)
+    private func thirtyMiTapped() {
+//        setButtonActive(realView.thirtyMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
