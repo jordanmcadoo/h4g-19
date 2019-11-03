@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5AA00E94236E0F6100A21EFF /* JobsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA00E93236E0F6100A21EFF /* JobsService.swift */; };
+		5AA00E96236E394B00A21EFF /* efactory.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5AA00E95236E394B00A21EFF /* efactory.gpx */; };
 		5B132AAE236DC30C0084CD6F /* JobCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */; };
 		5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AAF236DC91C0084CD6F /* Coordinator.swift */; };
 		5B132AB3236DCBCE0084CD6F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B132AB2236DCBCE0084CD6F /* Address.swift */; };
@@ -49,6 +50,7 @@
 		06E98A7126952E88324E208E /* Pods-portal-to-work.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portal-to-work.release.xcconfig"; path = "Target Support Files/Pods-portal-to-work/Pods-portal-to-work.release.xcconfig"; sourceTree = "<group>"; };
 		2CA05E7F82E21A74617A5E4F /* Pods_portal_to_work.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portal_to_work.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AA00E93236E0F6100A21EFF /* JobsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobsService.swift; sourceTree = "<group>"; };
+		5AA00E95236E394B00A21EFF /* efactory.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = efactory.gpx; sourceTree = "<group>"; };
 		5B132AAD236DC30C0084CD6F /* JobCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCoordinator.swift; sourceTree = "<group>"; };
 		5B132AAF236DC91C0084CD6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5B132AB2236DCBCE0084CD6F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		5BBA5532236C80C4009815D7 = {
 			isa = PBXGroup;
 			children = (
+				5AA00E95236E394B00A21EFF /* efactory.gpx */,
 				5BBA553D236C80C4009815D7 /* portal-to-work */,
 				5BBA553C236C80C4009815D7 /* Products */,
 				4ED7EAAFD0524513BDF3DFA6 /* Pods */,
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */,
+				5AA00E96236E394B00A21EFF /* efactory.gpx in Resources */,
 				5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

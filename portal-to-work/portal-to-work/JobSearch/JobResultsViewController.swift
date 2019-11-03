@@ -1,9 +1,49 @@
 import UIKit
 import CoreLocation
 import MapKit
+import Contacts
 
 protocol JobResultsViewControllerDelegate: class {
     func jobResultsViewController(_: JobResultsViewController, didSelectJob: Job)
+}
+
+extension JobResultsViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else {
+            print("returning nil")
+            return nil
+        }
+
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+        if annotationView == nil {
+            if annotation.title != "Your Location" {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true
+                annotationView!.tintColor = .blue
+                annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }
+        } else {
+            annotationView!.annotation = annotation
+            print("couldnt get view")
+        }
+
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+        calloutAccessoryControlTapped control: UIControl) {
+        print("callout tapped")
+        let location = view.annotation as! MKPointAnnotation
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        let addressDict = [CNPostalAddressStreetKey: location.subtitle!]
+        let placemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = title
+
+        mapItem.openInMaps(launchOptions: launchOptions)
+    }
 }
 
 class JobResultsViewController: UIViewController {
@@ -26,6 +66,16 @@ class JobResultsViewController: UIViewController {
         annotation.coordinate = location.coordinate
         annotation.title = "Your Location"
         realView.mapView.addAnnotation(annotation)
+        
+        self.jobs.forEach{ job in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: job.lat!, longitude: job.lon!)
+            annotation.title = job.title
+            annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
+            realView.mapView.addAnnotation(annotation)
+        }
+        
+        realView.mapView.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
