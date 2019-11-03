@@ -24,6 +24,7 @@
 		5B33F337236E0B3200612A0D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F336236E0B3200612A0D /* Event.swift */; };
 		5B33F339236E0BB700612A0D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F338236E0BB700612A0D /* EventCell.swift */; };
 		5B33F33B236E0CCA00612A0D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F33A236E0CCA00612A0D /* EventsView.swift */; };
+		5B836811236F579C00BE365D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B836810236F579C00BE365D /* UserInfo.swift */; };
 		5B857ACF236E6C0500D8E1FB /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857ACE236E6C0500D8E1FB /* EventsService.swift */; };
 		5B857AD6236E737B00D8E1FB /* BrandonText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B857AD5236E737B00D8E1FB /* BrandonText-Bold.otf */; };
 		5B857AD8236E738400D8E1FB /* BrandonText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B857AD7236E738400D8E1FB /* BrandonText-Regular.otf */; };
@@ -74,6 +75,7 @@
 		5B33F336236E0B3200612A0D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5B33F338236E0BB700612A0D /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		5B33F33A236E0CCA00612A0D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		5B836810236F579C00BE365D /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		5B857ACE236E6C0500D8E1FB /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		5B857AD5236E737B00D8E1FB /* BrandonText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrandonText-Bold.otf"; sourceTree = "<group>"; };
 		5B857AD7236E738400D8E1FB /* BrandonText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrandonText-Regular.otf"; sourceTree = "<group>"; };
@@ -156,6 +158,14 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		5B83680F236F578B00BE365D /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5B836810236F579C00BE365D /* UserInfo.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
 		5B857AD4236E734D00D8E1FB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 		5BBA553D236C80C4009815D7 /* portal-to-work */ = {
 			isa = PBXGroup;
 			children = (
+				5B83680F236F578B00BE365D /* UserInfo */,
 				5B857ADB236F2E8800D8E1FB /* Favorites */,
 				5B857AD4236E734D00D8E1FB /* Fonts */,
 				5B132AB1236DCBC60084CD6F /* Models */,
@@ -414,6 +425,7 @@
 				5B132AB5236DCD110084CD6F /* TextField+PTW.swift in Sources */,
 				5BBA5573236C9DC9009815D7 /* UILabel+PTW.swift in Sources */,
 				5B132AB3236DCBCE0084CD6F /* Address.swift in Sources */,
+				5B836811236F579C00BE365D /* UserInfo.swift in Sources */,
 				5B33F333236E0A9700612A0D /* EventCoordinator.swift in Sources */,
 				5AA00E94236E0F6100A21EFF /* JobsService.swift in Sources */,
 				5BBA5563236C944F009815D7 /* JobSearchViewController.swift in Sources */,

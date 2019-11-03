@@ -119,10 +119,11 @@ extension JobDetailViewController: MKMapViewDelegate {
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
 
             if annotationView == nil {
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView!.canShowCallout = true
-                annotationView!.tintColor = .blue
-                annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pinAnnotationView.pinTintColor = Branding.primaryColor()
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                annotationView = pinAnnotationView
             } else {
                 annotationView!.annotation = annotation
                 print("couldnt get view")

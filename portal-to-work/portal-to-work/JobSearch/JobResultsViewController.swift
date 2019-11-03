@@ -27,11 +27,6 @@ class JobResultsViewController: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location.coordinate
-        annotation.title = "Your Location"
-        realView.mapView.addAnnotation(annotation)
         realView.mapView.delegate = self
         realView.segmentedControl.selectedSegmentIndex = 0
         if #available(iOS 13.0, *) {
@@ -39,6 +34,8 @@ class JobResultsViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        
+        setupMap()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,6 +53,12 @@ class JobResultsViewController: UIViewController {
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
         realView.searchBar.delegate = self
         realView.segmentedControl.addTarget(self, action: #selector(distanceFilterTapped), for: .allEvents)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = homeLocation.coordinate
+        annotation.title = "Your Location"
+        realView.mapView.addAnnotation(annotation)
+        realView.mapView.selectAnnotation(annotation, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -151,10 +154,16 @@ extension JobResultsViewController: MKMapViewDelegate {
 
         if annotationView == nil {
             if annotation.title != "Your Location" {
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView!.canShowCallout = true
-                annotationView!.tintColor = .blue
-                annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pinAnnotationView.pinTintColor = Branding.primaryColor()
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                annotationView = pinAnnotationView
+            } else {
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                annotationView = pinAnnotationView
             }
         } else {
             annotationView!.annotation = annotation

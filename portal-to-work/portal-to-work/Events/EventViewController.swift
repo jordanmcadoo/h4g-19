@@ -4,10 +4,11 @@ import Contacts
 
 class EventsViewController: UIViewController {
     private let realView = EventsView()
+    let homeLocation: CLLocation
     var events: [Event] = [] {
         didSet {
             realView.tableView.reloadData()
-            self.events.forEach{ event in
+            self.events.forEach { event in
                 guard let latString = event.location.lat, let lat = Double(latString), let lngString = event.location.lng, let lng = Double(lngString) else {
                     print("no location for event \(event.title)")
                     return
@@ -23,6 +24,7 @@ class EventsViewController: UIViewController {
     }
     
     init() {
+        homeLocation = UserInfo.shared.location
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,9 +45,15 @@ class EventsViewController: UIViewController {
         realView.tableView.register(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: CLLocationDegrees(37.2119519), longitude: CLLocationDegrees(-93.290407)), span: span)
+        let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
         realView.mapView.delegate = self
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = homeLocation.coordinate
+        annotation.title = "Your Location"
+        realView.mapView.addAnnotation(annotation)
+        realView.mapView.selectAnnotation(annotation, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +96,11 @@ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
 }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let event = events[indexPath.row]
+        let event = events[indexPath.row]
+        let annotation = realView.mapView.annotations.first(where: { $0.title == event.title })
+        if let annotation = annotation {
+            realView.mapView.selectAnnotation(annotation, animated: true)
+        }
     }
 }
 
@@ -105,12 +117,16 @@ extension EventsViewController: MKMapViewDelegate {
 
         if annotationView == nil {
             if annotation.title != "Your Location" {
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView!.canShowCallout = true
-                annotationView!.tintColor = .blue
-//                let customPin = UIImage(named: "home2.png")
-//                annotationView!.image = customPin
-                annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pinAnnotationView.pinTintColor = Branding.primaryColor()
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                annotationView = pinAnnotationView
+            } else {
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                annotationView = pinAnnotationView
             }
         } else {
             annotationView!.annotation = annotation

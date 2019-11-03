@@ -90,6 +90,7 @@ extension JobSearchViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print("Found user's location: \(location)")
+            UserInfo.shared.location = location
             delegate?.jobSearchViewController(self, didReceiveLocation: location)
         }
     }
