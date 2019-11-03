@@ -6,7 +6,8 @@ class PortalButton: UIButton {
         
         setTitle(title, for: .normal)
         backgroundColor = Branding.primaryColor()
-        titleLabel?.font = UIFont(portalFont: .brandonTextBold, size: 17)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+            //UIFont(portalFont: .brandonTextBold, size: 17)
         layer.cornerRadius = 20
     }
     

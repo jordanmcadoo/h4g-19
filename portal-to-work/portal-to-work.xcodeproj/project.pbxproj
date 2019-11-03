@@ -25,6 +25,8 @@
 		5B33F339236E0BB700612A0D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F338236E0BB700612A0D /* EventCell.swift */; };
 		5B33F33B236E0CCA00612A0D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F33A236E0CCA00612A0D /* EventsView.swift */; };
 		5B857ACF236E6C0500D8E1FB /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857ACE236E6C0500D8E1FB /* EventsService.swift */; };
+		5B857AD6236E737B00D8E1FB /* BrandonText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B857AD5236E737B00D8E1FB /* BrandonText-Bold.otf */; };
+		5B857AD8236E738400D8E1FB /* BrandonText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B857AD7236E738400D8E1FB /* BrandonText-Regular.otf */; };
 		5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA553E236C80C4009815D7 /* AppDelegate.swift */; };
 		5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA5549236C80C4009815D7 /* Assets.xcassets */; };
 		5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */; };
@@ -68,6 +70,8 @@
 		5B33F338236E0BB700612A0D /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		5B33F33A236E0CCA00612A0D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		5B857ACE236E6C0500D8E1FB /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
+		5B857AD5236E737B00D8E1FB /* BrandonText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrandonText-Bold.otf"; sourceTree = "<group>"; };
+		5B857AD7236E738400D8E1FB /* BrandonText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrandonText-Regular.otf"; sourceTree = "<group>"; };
 		5BBA553B236C80C4009815D7 /* portal-to-work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "portal-to-work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BBA553E236C80C4009815D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BBA5549236C80C4009815D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +146,15 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		5B857AD4236E734D00D8E1FB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5B857AD5236E737B00D8E1FB /* BrandonText-Bold.otf */,
+				5B857AD7236E738400D8E1FB /* BrandonText-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5BBA5532236C80C4009815D7 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +177,7 @@
 		5BBA553D236C80C4009815D7 /* portal-to-work */ = {
 			isa = PBXGroup;
 			children = (
+				5B857AD4236E734D00D8E1FB /* Fonts */,
 				5B132AB1236DCBC60084CD6F /* Models */,
 				5BBA5578236CD9FA009815D7 /* Services */,
 				5BBA555F236C93F0009815D7 /* Extensions */,
@@ -293,7 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */,
+				5B857AD8236E738400D8E1FB /* BrandonText-Regular.otf in Resources */,
 				5AA00E96236E394B00A21EFF /* efactory.gpx in Resources */,
+				5B857AD6236E737B00D8E1FB /* BrandonText-Bold.otf in Resources */,
 				5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

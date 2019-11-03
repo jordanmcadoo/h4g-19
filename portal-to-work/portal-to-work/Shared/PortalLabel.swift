@@ -49,7 +49,8 @@ class PortalLabel: UILabel {
         
             super.init(frame: CGRect.zero)
             translatesAutoresizingMaskIntoConstraints = false
-            font = UIFont(portalFont: typeface, size: size)
+            font = UIFont().withSize(size)
+                //UIFont(portalFont: typeface, size: size)
             self.text = text // << This must be last.
     }
 
@@ -59,7 +60,8 @@ class PortalLabel: UILabel {
         self.lineHeightMultiple = nil
         super.init(coder: aDecoder)
         translatesAutoresizingMaskIntoConstraints = false
-        self.font = UIFont(portalFont: .brandonTextRegular, size: 14.0)
+        self.font = UIFont().withSize(14)
+        //UIFont(portalFont: .brandonTextRegular, size: 14.0)
     }
 
     override func awakeAfter(using aDecoder: NSCoder) -> Any? {

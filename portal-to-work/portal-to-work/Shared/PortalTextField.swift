@@ -58,7 +58,8 @@ class PortalTextField: UITextField, PortalFormFieldWithError {
         accessibilityLabel = titleLabel.text
         
         titleLabel.isUserInteractionEnabled = false
-        font = UIFont(portalFont: .brandonTextRegular, size: 22)
+        font = UIFont().withSize(22)
+            //UIFont(portalFont: .brandonTextRegular, size: 22)
         textColor = Branding.textColor()
         tintColor = Branding.linkColor()
 

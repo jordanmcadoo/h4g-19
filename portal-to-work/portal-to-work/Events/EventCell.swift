@@ -7,6 +7,7 @@ class EventCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        eventTitle.font = UIFont.boldSystemFont(ofSize: 16.0)
         commonInit()
     }
 
@@ -45,49 +46,3 @@ class EventCell: UITableViewCell {
         eventDescription.text = event.description
     }
 }
-
-//class EventCell: UITableViewCell {
-//    static let reuseIdentifier = "EventCell"
-//
-//    var titleLabel: UILabel!
-//    var descriptionLabel: UILabel!
-//
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        self.configure()
-//    }
-//
-//    func configure() {
-//        titleLabel = UILabel()
-//        descriptionLabel = UILabel().withLines(3)
-//        titleLabel.backgroundColor = .cyan
-//        descriptionLabel.backgroundColor = .yellow
-//
-//        contentView.addSubview(titleLabel)
-//        contentView.addSubview(descriptionLabel)
-//
-//        titleLabel.snp.makeConstraints {
-//            $0.leading.trailing.equalToSuperview().inset(20)
-//            $0.top.equalToSuperview().inset(10)
-//        }
-//
-//        descriptionLabel.snp.makeConstraints {
-//            $0.leading.trailing.equalToSuperview().inset(20)
-//            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
-//            $0.bottom.equalToSuperview().inset(10)
-//        }
-//
-//        titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-//        titleLabel.setContentHuggingPriority(.required, for: .vertical)
-//
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    func setupWithEvent(_ event: Event) {
-//        titleLabel.text = event.title
-//        descriptionLabel.text = event.description
-//    }
-//}
