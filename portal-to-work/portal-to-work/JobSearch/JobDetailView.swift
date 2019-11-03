@@ -3,8 +3,8 @@ import SnapKit
 class JobDetailView: BuildableView {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    let jobTitle = PortalLabel()
-    let employer = PortalLabel()
+    let jobTitle = PortalLabel(desiredFont: UIFont.boldSystemFont(ofSize: 25), size: 25)
+    let employer = PortalLabel(size: 20)
     let descriptionLabel = PortalLabel().withWrappedText()
     
     override var hierarchy: ViewHierarchy {
@@ -32,20 +32,19 @@ class JobDetailView: BuildableView {
         
         jobTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(30)
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
 
         employer.snp.makeConstraints { make in
+            make.top.equalTo(jobTitle.snp.bottom).offset(5)
             make.leading.equalTo(jobTitle.snp.leading)
             make.trailing.equalTo(jobTitle.snp.trailing)
-            make.top.equalTo(jobTitle.snp.bottom).offset(5)
         }
         
         descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(employer.snp.bottom).offset(15)
             make.leading.equalTo(jobTitle.snp.leading)
             make.trailing.equalTo(jobTitle.snp.trailing)
-            make.top.equalTo(employer.snp.bottom).offset(15)
             make.bottom.lessThanOrEqualToSuperview()
         }
     }

@@ -36,7 +36,7 @@ class PortalLabel: UILabel {
 
     init(desiredFont: UIFont = UIFont(),
         size: CGFloat = 14.0,
-        color: UIColor = .gray,
+        color: UIColor = .darkGray,
         tracking: Float = 0.0,
         allCaps: Bool = false,
         lineHeightMultiple: CGFloat? = nil,
