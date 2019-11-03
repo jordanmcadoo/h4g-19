@@ -3,6 +3,7 @@ import SnapKit
 class JobSearchView: BuildableView {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    let spinner = UIActivityIndicatorView()
     private let titleLabel = PortalLabel(text: "SET LOCATION FOR JOB SEARCH").aligned(.center)
     let useCurrentAddressButton = PortalButton(title: "USE MY CURRENT LOCATION")
     let orSeparator = OrSeparator()
@@ -14,7 +15,8 @@ class JobSearchView: BuildableView {
                 .views([titleLabel,
                         useCurrentAddressButton,
                         orSeparator,
-                        addressForm
+                        addressForm,
+                        spinner
                 ])
             ])
         ])
@@ -27,7 +29,7 @@ class JobSearchView: BuildableView {
         }
         
         contentView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
@@ -54,7 +56,17 @@ class JobSearchView: BuildableView {
             make.top.equalTo(orSeparator.snp.bottom).offset(30)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.bottom.greaterThanOrEqualToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        spinner.color = .black
+        if #available(iOS 13.0, *) {
+            spinner.style = .large
+        } else {
+            // Fallback on earlier versions
+        }
+        spinner.snp.makeConstraints { make in
+            make.edges.equalTo(self)
         }
     }
 }
@@ -98,6 +110,7 @@ class AddressForm: BuildableView {
         useManualAddressButton.snp.makeConstraints { make in
             make.top.equalTo(postalCodeTextField.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
         }
     }
 }

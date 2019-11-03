@@ -52,5 +52,11 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Find location to determine job distances</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Find location to determine job distances</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Find location to determine job distances</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Find location to determine job distances</string>
 </dict>
 </plist>

@@ -31,10 +31,12 @@ class JobSearchViewController: UIViewController {
     }
     
     @objc private func useCurrentLocationTapped() {
+        startSpinnner()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.requestLocation()
         } else {
+            stopSpinnner()
             locationManager.requestWhenInUseAuthorization()
         }
     }
@@ -67,6 +69,20 @@ class JobSearchViewController: UIViewController {
         
         return address
     }
+    
+    func startSpinnner() {
+        realView.spinner.startAnimating()
+        realView.useCurrentAddressButton.isEnabled = false
+        realView.addressForm.isUserInteractionEnabled = false
+        realView.addressForm.useManualAddressButton.isEnabled = false
+    }
+    
+    func stopSpinnner() {
+        realView.spinner.stopAnimating()
+        realView.useCurrentAddressButton.isEnabled = true
+        realView.addressForm.isUserInteractionEnabled = true
+        realView.addressForm.useManualAddressButton.isEnabled = true
+    }
 }
 
 extension JobSearchViewController: CLLocationManagerDelegate {
@@ -79,6 +95,6 @@ extension JobSearchViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
-        // todo - error
+        stopSpinnner()
     }
 }

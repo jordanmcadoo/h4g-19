@@ -14,11 +14,7 @@ struct Job: Decodable {
     let distanceInMiles: Double?
     
     func tempDescription() -> String {
-        guard let description = description else {
-            return generateRandomDescription()
-        }
-        
-        return description
+        return description ?? generateRandomDescription()
     }
     
     private func generateRandomDescription() -> String {
@@ -45,4 +41,27 @@ struct Location: Decodable {
 
 struct Employer: Decodable {
     let name: String
+}
+
+extension Array where Element == Job {
+    func sort(byLocation location: CLLocation) -> [Job] {
+        return self.sorted(by: { job1, job2 -> Bool in
+            let distance1 = location.distance(from: CLLocation(latitude: job1.lat!, longitude: job1.lon!))
+            let distance2 = location.distance(from: CLLocation(latitude: job2.lat!, longitude: job2.lon!))
+            return distance1 > distance2
+        })
+                
+        //        var filteredJobs: [Job] = []
+        //        self.allJobs.forEach { job in
+        //            let distance = location.distance(from: CLLocation(latitude: job.lat!, longitude: job.lon!))
+        //            let distanceInMiles = distance * 0.000621371
+        //            print("distance: \(distanceInMiles)")
+        //
+        //            if distanceInMiles < 5.0 {
+        //                filteredJobs.append(Job(title: job.title, employer: job.employer, description: job.description, locations: job.locations, lat: job.lat, lon: job.lon, distanceInMiles: distanceInMiles))
+        //            }
+        //        }
+                
+        //        return filteredJobs
+            }
 }

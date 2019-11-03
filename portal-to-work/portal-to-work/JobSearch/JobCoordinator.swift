@@ -5,23 +5,28 @@ class JobCoordinator: RootedCoordinator {
     private let navController: UINavigationController
     private let jobSearchVC = JobSearchViewController()
     private let jobsService = JobsService()
+    private let jobsPromise: JobPromise
     
     init() {
         self.navController = UINavigationController(rootViewController: jobSearchVC)
+        self.jobsPromise = jobsService.jobs()
         super.init(rootViewController: navController)
         
         jobSearchVC.delegate = self
-        jobsService.getData { success in
-            
-        }
     }
 }
 
 extension JobCoordinator: JobSearchViewControllerDelegate {
-    func jobSearchViewController(_: JobSearchViewController, didReceiveLocation location: CLLocation) {
-        let jobResultsVC = JobResultsViewController(location: location, jobsService: jobsService)
-        jobResultsVC.delegate = self
-        navController.pushViewController(jobResultsVC, animated: true)
+    func jobSearchViewController(_ jobSearchVC: JobSearchViewController, didReceiveLocation location: CLLocation) {
+        jobsPromise.ensure {
+            jobSearchVC.stopSpinnner()
+        }.done { jobs in
+            let jobResultsVC = JobResultsViewController(location: location, jobs: jobs)
+            jobResultsVC.delegate = self
+            self.navController.pushViewController(jobResultsVC, animated: true)
+        }.catch { error in
+            // todo - show error
+        }
     }
 }
 

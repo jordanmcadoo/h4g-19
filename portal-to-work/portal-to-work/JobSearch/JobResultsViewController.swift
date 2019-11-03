@@ -10,12 +10,12 @@ class JobResultsViewController: UIViewController {
     private let homeLocation: CLLocation
     weak var delegate: JobResultsViewControllerDelegate?
 
-    var jobs: [Job] = []
+    let jobs: [Job]
     var filteredData: [Job]!
     
-    init(location: CLLocation, jobsService: JobsService) {
+    init(location: CLLocation, jobs: [Job]) {
         self.homeLocation = location
-        self.jobs = jobsService.getByLocation(location: location)
+        self.jobs = jobs.sort(byLocation: location)
         super.init(nibName: nil, bundle: nil)
     }
     
