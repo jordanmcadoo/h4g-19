@@ -1,4 +1,5 @@
 import SnapKit
+import MapKit
 
 class JobDetailView: BuildableView {
     private let scrollView = UIScrollView()
@@ -10,6 +11,9 @@ class JobDetailView: BuildableView {
     let moreButton = PortalSecondaryButton(title: "More")
     let lessButton = PortalSecondaryButton(title: "Less").hidden(true)
     
+    let mapView = MKMapView()
+    
+    
     override var hierarchy: ViewHierarchy {
         return .view(scrollView, [
             .view(contentView, [
@@ -18,7 +22,8 @@ class JobDetailView: BuildableView {
                         linkToApply,
                         descriptionLabel,
                         moreButton,
-                        lessButton
+                        lessButton,
+                        mapView
                 ])
             ])
         ])
@@ -42,6 +47,13 @@ class JobDetailView: BuildableView {
             make.trailing.equalTo(linkToApply.snp.leading).priority(.medium)
         }
         
+        mapView.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.90)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
+            make.height.equalTo(200)
+            make.centerX.equalToSuperview()
+        }
+        
         employer.snp.makeConstraints { make in
             make.top.equalTo(jobTitle.snp.bottom).offset(5)
             make.leading.equalTo(jobTitle.snp.leading)
@@ -57,11 +69,11 @@ class JobDetailView: BuildableView {
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(employer.snp.bottom).offset(15)
             make.leading.equalTo(jobTitle.snp.leading)
-            make.trailing.equalTo(jobTitle.snp.trailing)
+            make.trailing.equalTo(mapView.snp.trailing)
         }
         
         moreButton.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
+            make.top.equalTo(mapView.snp.bottom).offset(10)
             make.width.equalTo(100)
             make.centerX.equalToSuperview()
             make.bottom.lessThanOrEqualToSuperview()
