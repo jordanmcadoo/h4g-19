@@ -29,6 +29,24 @@ class JobSearchViewController: UIViewController {
         navigationItem.title = "Find Jobs"
         realView.useCurrentAddressButton.addTarget(self, action: #selector(useCurrentLocationTapped), for: .touchUpInside)
         realView.addressForm.useManualAddressButton.addTarget(self, action: #selector(useManualLocationTapped), for: .touchUpInside)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.endEditing(true)
     }
     
     @objc private func useCurrentLocationTapped() {
@@ -58,6 +76,7 @@ class JobSearchViewController: UIViewController {
                 return
             }
 
+            UserInfo.shared.location = location
             self.delegate?.jobSearchViewController(self, didReceiveLocation: location)
         }
     }

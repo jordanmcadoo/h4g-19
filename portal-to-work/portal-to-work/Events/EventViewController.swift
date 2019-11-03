@@ -4,7 +4,7 @@ import Contacts
 
 class EventsViewController: UIViewController {
     private let realView = EventsView()
-    let homeLocation: CLLocation
+    var homeLocation: CLLocation
     var events: [Event] = [] {
         didSet {
             realView.tableView.reloadData()
@@ -49,19 +49,27 @@ class EventsViewController: UIViewController {
         realView.mapView.setRegion(region, animated: true)
         realView.mapView.delegate = self
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = homeLocation.coordinate
-        annotation.title = "Your Location"
-        realView.mapView.addAnnotation(annotation)
-        realView.mapView.selectAnnotation(annotation, animated: true)
+        setHomeAnnotation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setHomeAnnotation()
         if let selectionIndexPath = realView.tableView.indexPathForSelectedRow {
             realView.tableView.deselectRow(at: selectionIndexPath, animated: animated)
         }
+    }
+    
+    private func setHomeAnnotation() {
+        homeLocation = UserInfo.shared.location
+        let homeAnnotation = realView.mapView.annotations.filter { $0.title == "Your Location" }
+        realView.mapView.removeAnnotations(homeAnnotation)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = homeLocation.coordinate
+        annotation.title = "Your Location"
+        realView.mapView.addAnnotation(annotation)
+        realView.mapView.selectAnnotation(annotation, animated: true)
     }
     
     func startSpinnner() {
