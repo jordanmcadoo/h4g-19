@@ -1,5 +1,6 @@
 import UIKit
 import CoreLocation
+import MapKit
 
 protocol JobResultsViewControllerDelegate: class {
     func jobResultsViewController(_: JobResultsViewController, didSelectJob: Job)
@@ -17,6 +18,14 @@ class JobResultsViewController: UIViewController {
         self.homeLocation = location
         self.jobs = jobs.sort(byLocation: location)
         super.init(nibName: nil, bundle: nil)
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            realView.mapView.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        annotation.title = "Your Location"
+        realView.mapView.addAnnotation(annotation)
     }
     
     required init?(coder aDecoder: NSCoder) {
