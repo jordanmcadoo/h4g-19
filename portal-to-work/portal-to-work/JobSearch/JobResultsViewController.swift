@@ -23,7 +23,6 @@ class JobResultsViewController: UIViewController {
         self.visibleJobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
         self.filteredData = visibleJobs
         super.init(nibName: nil, bundle: nil)
-//        distanceButtons = [realView.oneMiButton, realView.fiveMiButton, realView.tenMiButton, realView.twentyMiButton, realView.thirtyMiButton]
         print("\(self.visibleJobs.count) jobs within 1.0 miles")
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
@@ -57,14 +56,6 @@ class JobResultsViewController: UIViewController {
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
         realView.searchBar.delegate = self
         realView.segmentedControl.addTarget(self, action: #selector(distanceFilterTapped), for: .allEvents)
-//        realView.oneMiButton.addTarget(self, action: #selector(oneMiTapped), for: .touchUpInside)
-//        realView.fiveMiButton.addTarget(self, action: #selector(fiveMiTapped), for: .touchUpInside)
-//        realView.tenMiButton.addTarget(self, action: #selector(tenMiTapped), for: .touchUpInside)
-//        realView.twentyMiButton.addTarget(self, action: #selector(twentyMiTapped), for: .touchUpInside)
-//        realView.thirtyMiButton.addTarget(self, action: #selector(thirtyMiTapped), for: .touchUpInside)
-//        let activeButton = realView.oneMiButton
-//        setButtonActive(activeButton)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +79,6 @@ class JobResultsViewController: UIViewController {
     }
     
     private func oneMiTapped() {
-//        setButtonActive(realView.oneMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
@@ -96,7 +86,6 @@ class JobResultsViewController: UIViewController {
     }
     
     private func fiveMiTapped() {
-//        setButtonActive(realView.fiveMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
@@ -104,7 +93,6 @@ class JobResultsViewController: UIViewController {
     }
     
     private func tenMiTapped() {
-//        setButtonActive(realView.tenMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
@@ -112,7 +100,6 @@ class JobResultsViewController: UIViewController {
     }
     
     private func twentyMiTapped() {
-//        setButtonActive(realView.twentyMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
@@ -120,7 +107,6 @@ class JobResultsViewController: UIViewController {
     }
     
     private func thirtyMiTapped() {
-//        setButtonActive(realView.thirtyMiButton)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
         realView.mapView.setRegion(region, animated: true)
@@ -150,19 +136,6 @@ class JobResultsViewController: UIViewController {
             annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
             realView.mapView.addAnnotation(annotation)
         }
-    }
-    
-    private func setButtonActive(_ button: PortalSecondaryButton) {
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = Branding.primaryColor()
-        
-        let otherButtons = distanceButtons.filter { $0 != button }
-        otherButtons.forEach { setButtonInactive($0) }
-    }
-    
-    private func setButtonInactive(_ button: PortalSecondaryButton) {
-        button.setTitleColor(Branding.primaryColor(), for: .normal)
-        button.backgroundColor = .clear
     }
 }
 
