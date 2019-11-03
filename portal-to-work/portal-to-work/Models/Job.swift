@@ -83,18 +83,5 @@ extension Array where Element == Job {
             return distance1 < distance2
         
         })
-                
-        //        var filteredJobs: [Job] = []
-        //        self.allJobs.forEach { job in
-        //            let distance = location.distance(from: CLLocation(latitude: job.lat!, longitude: job.lon!))
-        //            let distanceInMiles = distance * 0.000621371
-        //            print("distance: \(distanceInMiles)")
-        //
-        //            if distanceInMiles < 5.0 {
-        //                filteredJobs.append(Job(title: job.title, employer: job.employer, description: job.description, locations: job.locations, lat: job.lat, lon: job.lon, distanceInMiles: distanceInMiles))
-        //            }
-        //        }
-                
-        //        return filteredJobs
-            }
+    }
 }

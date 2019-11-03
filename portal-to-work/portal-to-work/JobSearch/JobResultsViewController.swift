@@ -15,12 +15,13 @@ class JobResultsViewController: UIViewController {
 
     let allJobs: [Job]
     var visibleJobs: [Job]
-    var filteredData: [Job]!
+    var filteredData: [Job]
     
     init(location: CLLocation, jobs: [Job]) {
         self.homeLocation = location
         self.allJobs = jobs
         self.visibleJobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
+        self.filteredData = visibleJobs
         super.init(nibName: nil, bundle: nil)
         distanceButtons = [realView.oneMiButton, realView.fiveMiButton, realView.tenMiButton, realView.twentyMiButton, realView.thirtyMiButton]
         print("\(self.visibleJobs.count) jobs within 1.0 miles")
@@ -56,7 +57,6 @@ class JobResultsViewController: UIViewController {
         realView.thirtyMiButton.addTarget(self, action: #selector(thirtyMiTapped), for: .touchUpInside)
         let activeButton = realView.oneMiButton
         setButtonActive(activeButton)
-        filteredData = visibleJobs
         
     }
     
@@ -110,8 +110,12 @@ class JobResultsViewController: UIViewController {
     }
     
     private func updateJobs(byMiles miles: Double) {
+        realView.searchBar.resignFirstResponder()
+        realView.searchBar.text = nil
         self.visibleJobs = allJobs.sort(byLocation: homeLocation).withinMiles(fromLocation: homeLocation, byMiles: miles)
+        filteredData = visibleJobs
         setupMap()
+        realView.tableView.reloadData()
     }
     
     private func setupMap() {
@@ -189,7 +193,7 @@ extension JobResultsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JobResultsCell.reuseIdentifier) as! JobResultsCell
-        let job = visibleJobs[indexPath.row]
+        let job = filteredData[indexPath.row]
         cell.setupWithJob(job, location: self.homeLocation)
         return cell
     }
@@ -201,7 +205,7 @@ extension JobResultsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let job = visibleJobs[indexPath.row]
+        let job = filteredData[indexPath.row]
         delegate?.jobResultsViewController(self, didSelectJob: job)
     }
 }
@@ -214,5 +218,9 @@ extension JobResultsViewController: UISearchBarDelegate {
         }
 
         realView.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }

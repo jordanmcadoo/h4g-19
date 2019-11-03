@@ -10,6 +10,12 @@ class MainTabBarController: UITabBarController {
         
         setupTabControllers()
         setupTabBar()
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     @available(*, unavailable)
