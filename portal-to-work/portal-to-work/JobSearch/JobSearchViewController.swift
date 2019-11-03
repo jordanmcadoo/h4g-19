@@ -25,6 +25,8 @@ class JobSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barTintColor = Branding.accentColor()
         navigationItem.title = "Find Jobs"
         realView.useCurrentAddressButton.addTarget(self, action: #selector(useCurrentLocationTapped), for: .touchUpInside)
         realView.addressForm.useManualAddressButton.addTarget(self, action: #selector(useManualLocationTapped), for: .touchUpInside)
