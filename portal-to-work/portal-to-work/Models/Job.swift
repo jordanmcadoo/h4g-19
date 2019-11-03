@@ -76,28 +76,11 @@ extension Array where Element == Job {
     
     func sort(byLocation location: CLLocation) -> [Job] {
         return self.sorted(by: { job1, job2 -> Bool in
-            guard let location1 = job1.locations.data.at(0) else {
+            guard let distance1 = job1.distanceInMiles(fromLocation: location), let distance2 = job2.distanceInMiles(fromLocation: location) else {
+                if let _ = job1.distanceInMiles(fromLocation: location) { return false }
                 return true
             }
-            guard let location2 = job1.locations.data.at(0) else {
-                return false
-            }
-            guard let lat1String = location1.lat, let lat1 = Double.init(lat1String) else {
-                return true
-            }
-            guard let lng1String = location1.lng, let lng1 = Double.init(lng1String) else {
-                return true
-            }
-            guard let lat2String = location2.lat, let lat2 = Double.init(lat2String) else {
-                return false
-            }
-            guard let lng2String = location2.lng, let lng2 = Double.init(lng2String) else {
-                return false
-            }
-            
-            let distance1 = location.distance(from: CLLocation(latitude: lat1, longitude: lng1))
-            let distance2 = location.distance(from: CLLocation(latitude: lat2, longitude: lng2))
-            return distance1 > distance2
+            return distance1 < distance2
         
         })
                 

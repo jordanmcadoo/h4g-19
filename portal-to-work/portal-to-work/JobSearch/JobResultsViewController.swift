@@ -9,37 +9,29 @@ protocol JobResultsViewControllerDelegate: class {
 
 class JobResultsViewController: UIViewController {
     private let realView = JobResultsView()
+    private var distanceButtons: [PortalSecondaryButton] = []
     private let homeLocation: CLLocation
     weak var delegate: JobResultsViewControllerDelegate?
 
-    let jobs: [Job]
+    let allJobs: [Job]
+    var visibleJobs: [Job]
     var filteredData: [Job]!
     
     init(location: CLLocation, jobs: [Job]) {
         self.homeLocation = location
-        self.jobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
+        self.allJobs = jobs
+        self.visibleJobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
         super.init(nibName: nil, bundle: nil)
-        
-        print("\(self.jobs.count) jobs within 1.0 miles")
+        distanceButtons = [realView.oneMiButton, realView.fiveMiButton, realView.tenMiButton, realView.twentyMiButton, realView.thirtyMiButton]
+        print("\(self.visibleJobs.count) jobs within 1.0 miles")
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            realView.mapView.setRegion(region, animated: true)
+        realView.mapView.setRegion(region, animated: true)
+        
         let annotation = MKPointAnnotation()
         annotation.coordinate = location.coordinate
         annotation.title = "Your Location"
         realView.mapView.addAnnotation(annotation)
-        
-        self.jobs.forEach{ job in
-            guard let location = job.locations.data.at(0), let latStr = location.lat, let lngStr = location.lng, let lat = Double(latStr), let lng = Double(lngStr) else {
-                return
-            }
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-            annotation.title = job.title
-            annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
-            realView.mapView.addAnnotation(annotation)
-        }
-        
         realView.mapView.delegate = self
     }
     
@@ -57,9 +49,14 @@ class JobResultsViewController: UIViewController {
         realView.tableView.delegate = self
         realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
         realView.searchBar.delegate = self
-        realView.oneMiButton.setTitleColor(.white, for: .normal)
-        realView.oneMiButton.backgroundColor = Branding.primaryColor()
-        filteredData = jobs
+        realView.oneMiButton.addTarget(self, action: #selector(oneMiTapped), for: .touchUpInside)
+        realView.fiveMiButton.addTarget(self, action: #selector(fiveMiTapped), for: .touchUpInside)
+        realView.tenMiButton.addTarget(self, action: #selector(tenMiTapped), for: .touchUpInside)
+        realView.twentyMiButton.addTarget(self, action: #selector(twentyMiTapped), for: .touchUpInside)
+        realView.thirtyMiButton.addTarget(self, action: #selector(thirtyMiTapped), for: .touchUpInside)
+        let activeButton = realView.oneMiButton
+        setButtonActive(activeButton)
+        filteredData = visibleJobs
         
     }
     
@@ -69,6 +66,80 @@ class JobResultsViewController: UIViewController {
         if let selectionIndexPath = realView.tableView.indexPathForSelectedRow {
             realView.tableView.deselectRow(at: selectionIndexPath, animated: animated)
         }
+    }
+    
+    @objc private func oneMiTapped() {
+        setButtonActive(realView.oneMiButton)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
+        realView.mapView.setRegion(region, animated: true)
+        updateJobs(byMiles: 1.0)
+    }
+    
+    @objc private func fiveMiTapped() {
+        setButtonActive(realView.fiveMiButton)
+        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
+        realView.mapView.setRegion(region, animated: true)
+        updateJobs(byMiles: 5.0)
+    }
+    
+    @objc private func tenMiTapped() {
+        setButtonActive(realView.tenMiButton)
+        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
+        realView.mapView.setRegion(region, animated: true)
+        updateJobs(byMiles: 10.0)
+    }
+    
+    @objc private func twentyMiTapped() {
+        setButtonActive(realView.twentyMiButton)
+        let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
+        let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
+        realView.mapView.setRegion(region, animated: true)
+        updateJobs(byMiles: 20.0)
+    }
+    
+    @objc private func thirtyMiTapped() {
+        setButtonActive(realView.thirtyMiButton)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: homeLocation.coordinate, span: span)
+        realView.mapView.setRegion(region, animated: true)
+        updateJobs(byMiles: 30.0)
+        
+    }
+    
+    private func updateJobs(byMiles miles: Double) {
+        self.visibleJobs = allJobs.sort(byLocation: homeLocation).withinMiles(fromLocation: homeLocation, byMiles: miles)
+        setupMap()
+    }
+    
+    private func setupMap() {
+        let jobAnnotations = realView.mapView.annotations.filter { $0.title != "Your Location" }
+        realView.mapView.removeAnnotations(jobAnnotations)
+        self.visibleJobs.forEach { job in
+            guard let location = job.locations.data.at(0), let latStr = location.lat, let lngStr = location.lng, let lat = Double(latStr), let lng = Double(lngStr) else {
+                return
+            }
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            annotation.title = job.title
+            annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
+            realView.mapView.addAnnotation(annotation)
+        }
+    }
+    
+    private func setButtonActive(_ button: PortalSecondaryButton) {
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = Branding.primaryColor()
+        
+        let otherButtons = distanceButtons.filter { $0 != button }
+        otherButtons.forEach { setButtonInactive($0) }
+    }
+    
+    private func setButtonInactive(_ button: PortalSecondaryButton) {
+        button.setTitleColor(Branding.primaryColor(), for: .normal)
+        button.backgroundColor = .clear
     }
 }
 
@@ -118,7 +189,7 @@ extension JobResultsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JobResultsCell.reuseIdentifier) as! JobResultsCell
-        let job = jobs[indexPath.row]
+        let job = visibleJobs[indexPath.row]
         cell.setupWithJob(job, location: self.homeLocation)
         return cell
     }
@@ -130,14 +201,14 @@ extension JobResultsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let job = jobs[indexPath.row]
+        let job = visibleJobs[indexPath.row]
         delegate?.jobResultsViewController(self, didSelectJob: job)
     }
 }
 
 extension JobResultsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = searchText.isEmpty ? jobs : jobs.filter { (item: Job) -> Bool in
+        filteredData = searchText.isEmpty ? visibleJobs : visibleJobs.filter { (item: Job) -> Bool in
             // If dataItem matches the searchText, return true to include it
             return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
