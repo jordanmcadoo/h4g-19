@@ -24,6 +24,7 @@
 		5B33F337236E0B3200612A0D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F336236E0B3200612A0D /* Event.swift */; };
 		5B33F339236E0BB700612A0D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F338236E0BB700612A0D /* EventCell.swift */; };
 		5B33F33B236E0CCA00612A0D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F33A236E0CCA00612A0D /* EventsView.swift */; };
+		5B857ACF236E6C0500D8E1FB /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B857ACE236E6C0500D8E1FB /* EventsService.swift */; };
 		5BBA553F236C80C4009815D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA553E236C80C4009815D7 /* AppDelegate.swift */; };
 		5BBA554A236C80C4009815D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA5549236C80C4009815D7 /* Assets.xcassets */; };
 		5BBA554D236C80C4009815D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA554B236C80C4009815D7 /* LaunchScreen.storyboard */; };
@@ -66,6 +67,7 @@
 		5B33F336236E0B3200612A0D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5B33F338236E0BB700612A0D /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		5B33F33A236E0CCA00612A0D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		5B857ACE236E6C0500D8E1FB /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		5BBA553B236C80C4009815D7 /* portal-to-work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "portal-to-work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BBA553E236C80C4009815D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BBA5549236C80C4009815D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				5AA00E93236E0F6100A21EFF /* JobsService.swift */,
+				5B857ACE236E6C0500D8E1FB /* EventsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				5BBA556B236C9AED009815D7 /* PortalTextField.swift in Sources */,
 				5B132AB0236DC91C0084CD6F /* Coordinator.swift in Sources */,
 				5B33F335236E0AEE00612A0D /* EventViewController.swift in Sources */,
+				5B857ACF236E6C0500D8E1FB /* EventsService.swift in Sources */,
 				5BBA5555236C81CF009815D7 /* MainTabBarController.swift in Sources */,
 				5BBA5569236C95C4009815D7 /* PortalLabel.swift in Sources */,
 				5B33F339236E0BB700612A0D /* EventCell.swift in Sources */,

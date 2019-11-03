@@ -1,7 +1,11 @@
 import Foundation
 
-struct Event {
+struct EventData: Decodable {
+    let data: [Event]
+}
+
+struct Event: Decodable {
     let title: String
     let description: String
-    let dateBegin: Date
+    let dateBegin: String?
 }

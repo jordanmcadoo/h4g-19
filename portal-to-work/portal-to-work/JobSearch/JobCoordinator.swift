@@ -5,7 +5,7 @@ class JobCoordinator: RootedCoordinator {
     private let navController: UINavigationController
     private let jobSearchVC = JobSearchViewController()
     private let jobsService = JobsService()
-    private let jobsPromise: JobPromise
+    private let jobsPromise: JobsPromise
     
     init() {
         self.navController = UINavigationController(rootViewController: jobSearchVC)

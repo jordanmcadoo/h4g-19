@@ -2,9 +2,11 @@ import UIKit
 
 class EventsViewController: UIViewController {
     private let realView = EventsView()
-
-    let events = [Event(title: "Event 1", description: "Jelly beans marzipan chocolate marzipan chocolate bar bear claw. Tootsie roll sweet cheesecake gingerbread biscuit chupa chups soufflé liquorice. Tiramisu gummi bears dessert bonbon carrot cake.", dateBegin: Date.init())]
-//    Event(title: "Event 2", description: "Jelly beans marzipan chocolate marzipan chocolate bar bear claw. Tootsie roll sweet cheesecake gingerbread biscuit chupa chups soufflé liquorice. Tiramisu gummi bears dessert bonbon carrot cake.", dateBegin: Date.init())]
+    var events: [Event] = [] {
+        didSet {
+            realView.tableView.reloadData()
+        }
+    }
     
     init() {
         super.init(nibName: nil, bundle: nil)

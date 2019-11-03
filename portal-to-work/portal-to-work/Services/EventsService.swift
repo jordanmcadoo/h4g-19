@@ -2,19 +2,19 @@ import Foundation
 import CoreLocation
 import PromiseKit
 
-typealias JobsPromise = Promise<[Job]>
-enum JobError: Error {
+typealias EventsPromise = Promise<[Event]>
+enum EventError: Error {
     case unknownError
 }
 
-class JobsService {
+class EventsService {
     init() {}
     
-    func jobs() -> JobsPromise {
-        return JobsPromise { seal in
-            self.getData { jobData, error in
-                if let jobData = jobData {
-                    seal.fulfill(jobData.data)
+    func events() -> EventsPromise {
+        return EventsPromise { seal in
+            self.getData { eventData, error in
+                if let eventData = eventData {
+                    seal.fulfill(eventData.data)
                 } else if let error = error {
                     seal.reject(error)
                 } else {
@@ -24,9 +24,9 @@ class JobsService {
         }
     }
     
-    func getData(completionHandler: @escaping (JobData?, Error?) -> Void) {
+    private func getData(completionHandler: @escaping (EventData?, Error?) -> Void) {
         print("fetching data...")
-        let url = URL(string: "https://jobs.api.sgf.dev/api/job?api_token=9ZGHl8yeQoaSBNUtwSlPaEJ1exTyWsRL7efirwhSlCmtGa1kCWSXgTSutK3Qqya3CchJpf2ANiiqTXP9")!
+        let url = URL(string: "https://jobs.api.sgf.dev/api/event?api_token=9ZGHl8yeQoaSBNUtwSlPaEJ1exTyWsRL7efirwhSlCmtGa1kCWSXgTSutK3Qqya3CchJpf2ANiiqTXP9")!
         URLSession.shared.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
                  // todo Handle Error
@@ -39,9 +39,9 @@ class JobsService {
                  return
              }
             do {
-                let result = try JSONDecoder().decode(JobData.self, from: data)
+                let result = try JSONDecoder().decode(EventData.self, from: data)
 
-                print("loaded \(result.data.count) jobs")
+                print("loaded \(result.data.count) events")
                 completionHandler(result, nil)
             } catch {
                 print("failed decoding")
