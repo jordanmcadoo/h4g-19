@@ -82,14 +82,16 @@ class JobDetailView: BuildableView {
 }
 
 class JobSpecificsView: BuildableView {
-    let jobSalary = JobSpecificItem()
-    let jobType = JobSpecificItem()
-    let jobRequirements = JobSpecificItem()
+    let jobSalary = JobSpecificItem(title: "Salary")
+    let jobType = JobSpecificItem(title: "Job Type")
+    let jobRequirements = JobSpecificItem(title: "Job Requirements")
+    let horizontalLine = UIView()
     
     override var hierarchy: ViewHierarchy {
         return .views([jobSalary,
                        jobType,
-                       jobRequirements
+                       jobRequirements,
+                       horizontalLine
         ])
     }
     
@@ -102,26 +104,42 @@ class JobSpecificsView: BuildableView {
             make.top.equalTo(jobSalary.snp.bottom)
             make.leading.trailing.equalToSuperview()
         }
-        
+
         jobRequirements.snp.makeConstraints { make in
             make.top.equalTo(jobType.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.lessThanOrEqualToSuperview()
+        }
+        
+        horizontalLine.backgroundColor = Branding.primaryColor().withAlphaComponent(0.1)
+        horizontalLine.snp.makeConstraints { make in
+            make.top.equalTo(jobRequirements.snp.bottom)
+            make.height.equalTo(1)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }
 
 class JobSpecificItem: BuildableView {
     let horizontalLine = UIView()
-    let key = PortalLabel(text: "Key")
-    let value = PortalLabel(text: "Value")
+    let key = PortalLabel()
+    let value = PortalLabel()
+    
+    init(title: String) {
+        key.text = title
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override var hierarchy: ViewHierarchy {
         return .views([horizontalLine, key, value])
     }
     
     override func installConstraints() {
-        horizontalLine.backgroundColor = Branding.primaryColor().withAlphaComponent(0.3)
+        horizontalLine.backgroundColor = Branding.primaryColor().withAlphaComponent(0.1)
         horizontalLine.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.height.equalTo(1)
@@ -129,14 +147,14 @@ class JobSpecificItem: BuildableView {
         }
         
         key.snp.makeConstraints { make in
-            make.top.equalTo(horizontalLine.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(20)
+            make.top.equalTo(horizontalLine.snp.bottom).offset(15)
+            make.leading.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(15)
         }
         
         value.snp.makeConstraints { make in
             make.top.bottom.equalTo(key)
-            make.trailing.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(15)
         }
         
         key.setContentCompressionResistancePriority(.required, for: .horizontal)

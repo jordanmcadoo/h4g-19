@@ -48,6 +48,10 @@ class JobDetailViewController: UIViewController {
         realView.employer.text = job.employer.name
         realView.descriptionLabel.setHTMLFromString(htmlText: job.tempDescription())
         
+        realView.jobSpecificsView.jobSalary.value.text = job.payRate
+        realView.jobSpecificsView.jobRequirements.value.text = job.reqEducation ?? "Unknown"
+        realView.jobSpecificsView.jobType.value.text = job.jobType ?? "Unknown"
+        
         setupMapView()
     }
     
