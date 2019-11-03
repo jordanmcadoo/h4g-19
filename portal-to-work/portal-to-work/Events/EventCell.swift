@@ -2,12 +2,11 @@ import UIKit
 
 class EventCell: UITableViewCell {
     static let reuseIdentifier = "EventCell"
-    private let eventTitle = PortalLabel()
+    private let eventTitle = PortalLabel(desiredFont: UIFont.boldSystemFont(ofSize: 18), size: 18)
     private let eventDescription = PortalLabel().withLines(3)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        eventTitle.font = UIFont.boldSystemFont(ofSize: 16.0)
         commonInit()
     }
 

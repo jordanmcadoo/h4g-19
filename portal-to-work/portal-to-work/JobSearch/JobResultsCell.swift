@@ -3,7 +3,7 @@ import UIKit
 class JobResultsCell: UITableViewCell {
     static let reuseIdentifier = "JobResultsCell"
     let jobView = UIView()
-    private let jobTitle = PortalLabel()
+    private let jobTitle = PortalLabel(desiredFont: UIFont.boldSystemFont(ofSize: 18), size: 18)
     private let employer = PortalLabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
