@@ -14,9 +14,9 @@ class JobsService {
     
     func jobs() -> JobPromise {
         return JobPromise { seal in
-            self.getData { jobs, error in
-                if let jobs = jobs {
-                    seal.fulfill(self.setLatLong(forJobData: jobs))
+            self.getData { jobData, error in
+                if let jobData = jobData {
+                    seal.fulfill(jobData.data)
                 } else if let error = error {
                     seal.reject(error)
                 } else {
@@ -49,39 +49,5 @@ class JobsService {
                 print("failed decoding")
             }
         }.resume()
-    }
-    
-    private func setLatLong(forJobData jobData: JobData) -> [Job] {
-        var jobs = [Job]()
-        
-        jobData.data.forEach { job in
-            if (job.lat != nil) && (job.lon != nil) {
-                jobs.append(job)
-                return
-            }
-            if job.locations.data.count < 1 {
-                print("skipping location for \(job.title)")
-                return
-            }
-            let geoCoder = CLGeocoder()
-            let address = Address(street: job.locations.data[0].street, city: job.locations.data[0].city, state: job.locations.data[0].state, postalCode: job.locations.data[0].zipcode)
-
-            geoCoder.geocodeAddressString(address.asString()) { (placemarks, error) in
-                guard
-                    let placemarks = placemarks,
-                    let location = placemarks.first?.location
-                else {
-                    // todo handle no location found
-                    return
-                }
-
-                let lat = location.coordinate.latitude as Double
-                let lon = location.coordinate.longitude as Double
-                jobs.append(Job(title: job.title, employer: job.employer, description: job.description, locations: job.locations, lat: lat, lon: lon, distanceInMiles: nil))
-                print("geocoded \(job.title)")
-            }
-        }
-        
-        return jobs
     }
 }

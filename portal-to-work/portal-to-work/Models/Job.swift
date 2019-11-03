@@ -46,9 +46,17 @@ struct Employer: Decodable {
 extension Array where Element == Job {
     func sort(byLocation location: CLLocation) -> [Job] {
         return self.sorted(by: { job1, job2 -> Bool in
-            let distance1 = location.distance(from: CLLocation(latitude: job1.lat!, longitude: job1.lon!))
-            let distance2 = location.distance(from: CLLocation(latitude: job2.lat!, longitude: job2.lon!))
-            return distance1 > distance2
+            if let lat1 = job1.lat, let lon1 = job1.lon, let lat2 = job2.lat, let lon2 = job2.lon {
+                let distance1 = location.distance(from: CLLocation(latitude: lat1, longitude: lon1))
+                let distance2 = location.distance(from: CLLocation(latitude: lat2, longitude: lon2))
+                return distance1 > distance2
+            } else if let _ = job1.lat, let _ = job1.lon {
+                return true
+            } else if let _ = job2.lat, let _ = job2.lon {
+                return false
+            } else {
+                return false
+            }
         })
                 
         //        var filteredJobs: [Job] = []
