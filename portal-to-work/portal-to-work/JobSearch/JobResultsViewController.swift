@@ -7,6 +7,68 @@ protocol JobResultsViewControllerDelegate: class {
     func jobResultsViewController(_: JobResultsViewController, didSelectJob: Job)
 }
 
+class JobResultsViewController: UIViewController {
+    private let realView = JobResultsView()
+    private let homeLocation: CLLocation
+    weak var delegate: JobResultsViewControllerDelegate?
+
+    let jobs: [Job]
+    var filteredData: [Job]!
+    
+    init(location: CLLocation, jobs: [Job]) {
+        self.homeLocation = location
+        self.jobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
+        super.init(nibName: nil, bundle: nil)
+        
+        print("\(self.jobs.count) jobs within 1.0 miles")
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            realView.mapView.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        annotation.title = "Your Location"
+        realView.mapView.addAnnotation(annotation)
+        
+        self.jobs.forEach{ job in
+            guard let location = job.locations.data.at(0), let latStr = location.lat, let lngStr = location.lng, let lat = Double(latStr), let lng = Double(lngStr) else {
+                return
+            }
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            annotation.title = job.title
+            annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
+            realView.mapView.addAnnotation(annotation)
+        }
+        
+        realView.mapView.delegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        view = realView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        realView.tableView.dataSource = self
+        realView.tableView.delegate = self
+        realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
+        realView.searchBar.delegate = self
+        filteredData = jobs
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectionIndexPath = realView.tableView.indexPathForSelectedRow {
+            realView.tableView.deselectRow(at: selectionIndexPath, animated: animated)
+        }
+    }
+}
+
 extension JobResultsViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else {
@@ -43,71 +105,6 @@ extension JobResultsViewController: MKMapViewDelegate {
         mapItem.name = title
 
         mapItem.openInMaps(launchOptions: launchOptions)
-    }
-}
-
-class JobResultsViewController: UIViewController {
-    private let realView = JobResultsView()
-    private let homeLocation: CLLocation
-    weak var delegate: JobResultsViewControllerDelegate?
-
-    let jobs: [Job]
-    var filteredData: [Job]!
-    
-    init(location: CLLocation, jobs: [Job]) {
-        self.homeLocation = location
-        self.jobs = jobs.sort(byLocation: location).withinMiles(fromLocation: location, byMiles: 1.0)
-        super.init(nibName: nil, bundle: nil)
-        
-        print("\(self.jobs.count) jobs within 1.0 miles")
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            realView.mapView.setRegion(region, animated: true)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location.coordinate
-        annotation.title = "Your Location"
-        realView.mapView.addAnnotation(annotation)
-        
-        self.jobs.forEach{ job in
-            guard let location = job.locations.data.at(0) else {
-                return
-            }
-            guard let lat = location.lat, let lng = location.lng else {
-                return
-            }
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: Double.init(lat)!, longitude: Double.init(lng)!)
-            annotation.title = job.title
-            annotation.subtitle = Address.fromLocation(location: job.locations.data[0]).asString()
-            realView.mapView.addAnnotation(annotation)
-        }
-        
-        realView.mapView.delegate = self
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func loadView() {
-        view = realView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        realView.tableView.dataSource = self
-        realView.tableView.delegate = self
-        realView.tableView.register(JobResultsCell.self, forCellReuseIdentifier: JobResultsCell.reuseIdentifier)
-        realView.searchBar.delegate = self
-        filteredData = jobs
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let selectionIndexPath = realView.tableView.indexPathForSelectedRow {
-            realView.tableView.deselectRow(at: selectionIndexPath, animated: animated)
-        }
     }
 }
 

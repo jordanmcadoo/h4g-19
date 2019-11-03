@@ -1,4 +1,6 @@
 import UIKit
+import MapKit
+import Contacts
 
 class JobDetailViewController: UIViewController {
     private let realView = JobDetailView()
@@ -45,5 +47,37 @@ class JobDetailViewController: UIViewController {
         realView.jobTitle.text = job.title
         realView.employer.text = job.employer.name
         realView.descriptionLabel.setHTMLFromString(htmlText: job.tempDescription())
+        
+        setupMapView()
+    }
+    
+    private func setupMapView() {
+        guard let location = job.locations.data.at(0), let latStr = location.lat, let lngStr = location.lng, let lat = Double(latStr), let lng = Double(lngStr) else {
+            return
+        }
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        realView.mapView.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = job.employer.name
+        annotation.subtitle = Address.fromLocation(location: location).asString()
+        realView.mapView.addAnnotation(annotation)
+    }
+}
+
+extension JobDetailViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+        calloutAccessoryControlTapped control: UIControl) {
+        print("callout tapped")
+        let location = view.annotation as! MKPointAnnotation
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        let addressDict = [CNPostalAddressStreetKey: location.subtitle!]
+        let placemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = title
+
+        mapItem.openInMaps(launchOptions: launchOptions)
     }
 }
